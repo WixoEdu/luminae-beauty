@@ -1,0 +1,21 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg:    #f0ede9;
+  --black: #0d0d0d;
+  --muted: #9a9a9a;
+  --gold:  #b8975a;
+  --white: #ffffff;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  overflow-x: hidden;
+}
