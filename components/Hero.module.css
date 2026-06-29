@@ -6,7 +6,7 @@
   overflow: hidden;
 }
 
-/* ── Custom cursor ── */
+/* ── Custom cursor (desktop only) ── */
 .cursor {
   position: fixed;
   width: 48px;
@@ -146,7 +146,17 @@
   padding-left: 2px;
 }
 
-/* ── Reveal hint ── */
+/* Touch hint — shown only on mobile */
+.touchHint {
+  display: none;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 24px;
+}
+
+/* ── Desktop reveal hint ── */
 .hint {
   position: absolute;
   bottom: 10%;
@@ -201,4 +211,59 @@
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.3; transform: scaleY(1); }
   50%       { opacity: 0.9; transform: scaleY(1.15); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  /* Stronger bottom gradient so text is always legible */
+  .overlay {
+    background: linear-gradient(
+      to top,
+      rgba(240, 237, 233, 0.92) 0%,
+      rgba(240, 237, 233, 0.50) 38%,
+      transparent 62%
+    );
+  }
+
+  .content {
+    left: 24px;
+    right: 24px;
+    bottom: 8%;
+    max-width: none;
+  }
+
+  .title {
+    font-size: clamp(34px, 9vw, 48px);
+    margin-bottom: 24px;
+  }
+
+  .actions {
+    gap: 16px;
+  }
+
+  .btnGhost {
+    font-size: 13px;
+  }
+
+  /* Show touch hint, hide desktop hint */
+  .touchHint {
+    display: block;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  .scrollIndicator {
+    display: none;
+  }
+
+  /* Normal cursor on touch devices */
+  .revealWrap {
+    cursor: auto;
+  }
+
+  .cursor {
+    display: none;
+  }
 }

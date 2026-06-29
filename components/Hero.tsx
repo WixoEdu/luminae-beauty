@@ -4,20 +4,21 @@ import Image from 'next/image'
 import { useRef, useEffect, useCallback } from 'react'
 import styles from './Hero.module.css'
 
-const RADIUS = 230
+const RADIUS       = 230
+const TOUCH_RADIUS = 140
 const SHRINK_FACTOR = 0.85
 
 export default function Hero() {
-  const sectionRef      = useRef<HTMLElement>(null)
-  const revealWrapRef   = useRef<HTMLDivElement>(null)
-  const revealRef       = useRef<HTMLDivElement>(null)
-  const cursorRef    = useRef<HTMLDivElement>(null)
-  const mouseRef     = useRef({ x: 0, y: 0 })
-  const cursorPosRef = useRef({ x: 0, y: 0 })
-  const rafRef       = useRef(0)
-  const shrinkRafRef = useRef(0)
-  const lastPosRef   = useRef({ x: 0, y: 0 })
-  const radiusRef    = useRef(0)
+  const sectionRef    = useRef<HTMLElement>(null)
+  const revealWrapRef = useRef<HTMLDivElement>(null)
+  const revealRef     = useRef<HTMLDivElement>(null)
+  const cursorRef     = useRef<HTMLDivElement>(null)
+  const mouseRef      = useRef({ x: 0, y: 0 })
+  const cursorPosRef  = useRef({ x: 0, y: 0 })
+  const rafRef        = useRef(0)
+  const shrinkRafRef  = useRef(0)
+  const lastPosRef    = useRef({ x: 0, y: 0 })
+  const radiusRef     = useRef(0)
 
   const applyMask = (x: number, y: number, r: number) => {
     const el = revealRef.current
@@ -27,57 +28,7 @@ export default function Hero() {
     el.style.setProperty('-webkit-mask-image', mask)
   }
 
-  // Smooth cursor follow via lerp — always runs, regardless of what element is hovered
-  const animateCursor = useCallback(() => {
-    const lerp = (a: number, b: number, t: number) => a + (b - a) * t
-    cursorPosRef.current.x = lerp(cursorPosRef.current.x, mouseRef.current.x, 0.18)
-    cursorPosRef.current.y = lerp(cursorPosRef.current.y, mouseRef.current.y, 0.18)
-    if (cursorRef.current) {
-      cursorRef.current.style.left = `${cursorPosRef.current.x}px`
-      cursorRef.current.style.top  = `${cursorPosRef.current.y}px`
-    }
-    rafRef.current = requestAnimationFrame(animateCursor)
-  }, [])
-
-  useEffect(() => {
-    // Document-level tracking: show custom cursor only when the element
-    // directly under the pointer is inside the image stack (revealWrap),
-    // not over buttons, text, or nav items.
-    const onMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY }
-
-      if (!cursorRef.current || !revealWrapRef.current) return
-      const under = document.elementFromPoint(e.clientX, e.clientY)
-      const overImage = !!under && revealWrapRef.current.contains(under)
-      cursorRef.current.classList.toggle(styles.cursorActive, overImage)
-    }
-
-    document.addEventListener('mousemove', onMove)
-    rafRef.current = requestAnimationFrame(animateCursor)
-
-    return () => {
-      document.removeEventListener('mousemove', onMove)
-      cancelAnimationFrame(rafRef.current)
-    }
-  }, [animateCursor])
-
-  // Reveal tracks the whole section so it keeps working over text and buttons
-  const handleSectionMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (!sectionRef.current || !revealRef.current) return
-    cancelAnimationFrame(shrinkRafRef.current)
-
-    const el = revealRef.current
-    if (el.style.opacity !== '1') el.style.opacity = '1'
-
-    const rect = sectionRef.current.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    lastPosRef.current = { x, y }
-    radiusRef.current = RADIUS
-    applyMask(x, y, RADIUS)
-  }
-
-  const handleSectionLeave = () => {
+  const startShrink = () => {
     cancelAnimationFrame(shrinkRafRef.current)
     const { x, y } = lastPosRef.current
 
@@ -95,12 +46,78 @@ export default function Hero() {
     shrinkRafRef.current = requestAnimationFrame(shrink)
   }
 
+  // Smooth cursor follow via lerp
+  const animateCursor = useCallback(() => {
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t
+    cursorPosRef.current.x = lerp(cursorPosRef.current.x, mouseRef.current.x, 0.18)
+    cursorPosRef.current.y = lerp(cursorPosRef.current.y, mouseRef.current.y, 0.18)
+    if (cursorRef.current) {
+      cursorRef.current.style.left = `${cursorPosRef.current.x}px`
+      cursorRef.current.style.top  = `${cursorPosRef.current.y}px`
+    }
+    rafRef.current = requestAnimationFrame(animateCursor)
+  }, [])
+
+  useEffect(() => {
+    // Show custom cursor only when directly over the image stack
+    const onMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY }
+      if (!cursorRef.current || !revealWrapRef.current) return
+      const under = document.elementFromPoint(e.clientX, e.clientY)
+      const overImage = !!under && revealWrapRef.current.contains(under)
+      cursorRef.current.classList.toggle(styles.cursorActive, overImage)
+    }
+
+    document.addEventListener('mousemove', onMove)
+    rafRef.current = requestAnimationFrame(animateCursor)
+
+    return () => {
+      document.removeEventListener('mousemove', onMove)
+      cancelAnimationFrame(rafRef.current)
+    }
+  }, [animateCursor])
+
+  // ── Mouse handlers ──
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!sectionRef.current || !revealRef.current) return
+    cancelAnimationFrame(shrinkRafRef.current)
+
+    const el = revealRef.current
+    if (el.style.opacity !== '1') el.style.opacity = '1'
+
+    const rect = sectionRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    lastPosRef.current = { x, y }
+    radiusRef.current = RADIUS
+    applyMask(x, y, RADIUS)
+  }
+
+  // ── Touch handlers ──
+  const handleTouchMove = (e: React.TouchEvent<HTMLElement>) => {
+    if (!sectionRef.current || !revealRef.current) return
+    cancelAnimationFrame(shrinkRafRef.current)
+
+    const touch = e.touches[0]
+    const el = revealRef.current
+    if (el.style.opacity !== '1') el.style.opacity = '1'
+
+    const rect = sectionRef.current.getBoundingClientRect()
+    const x = touch.clientX - rect.left
+    const y = touch.clientY - rect.top
+    lastPosRef.current = { x, y }
+    radiusRef.current = TOUCH_RADIUS
+    applyMask(x, y, TOUCH_RADIUS)
+  }
+
   return (
     <section
       ref={sectionRef}
       className={styles.hero}
-      onMouseMove={handleSectionMove}
-      onMouseLeave={handleSectionLeave}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={startShrink}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={startShrink}
     >
       <div ref={cursorRef} className={styles.cursor} />
 
@@ -118,7 +135,7 @@ export default function Hero() {
           />
         </div>
 
-        {/* Reveal: after (treated skin) — feathered spotlight on hover */}
+        {/* Reveal: after (treated skin) — feathered spotlight on hover/touch */}
         <div ref={revealRef} className={styles.imgReveal}>
           <Image
             src="/after.png"
@@ -148,8 +165,11 @@ export default function Hero() {
             Ver Tratamientos
           </button>
         </div>
+        {/* Touch-only hint inline with content */}
+        <p className={styles.touchHint}>✦ Desliza el dedo para revelar</p>
       </div>
 
+      {/* Desktop-only hint */}
       <div className={styles.hint}>
         <span className={styles.sparkle}>✦</span>
         <p>Mueve el cursor para</p>
