@@ -87,19 +87,19 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  background: none;
+  background: var(--black);
   border: none;
+  border-radius: 10px;
   cursor: pointer;
-  padding: 6px;
+  padding: 10px 12px;
 }
 
 .hamburger span {
   display: block;
   width: 22px;
   height: 1.5px;
-  background: var(--black);
+  background: var(--white);
   border-radius: 2px;
-  transition: opacity 0.2s;
 }
 
 /* ── Mobile full-screen menu ── */

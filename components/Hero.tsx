@@ -161,7 +161,11 @@ export default function Hero() {
         <div className={styles.actions}>
           <button className={styles.btnPrimary}>Descubrir</button>
           <button className={styles.btnGhost}>
-            <span className={styles.playIcon}>▶</span>
+            <span className={styles.playIcon} aria-hidden="true">
+              <svg width="9" height="10" viewBox="0 0 9 10" fill="currentColor">
+                <path d="M0 0l9 5-9 5V0z" />
+              </svg>
+            </span>
             Ver Tratamientos
           </button>
         </div>
