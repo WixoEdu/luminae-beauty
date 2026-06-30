@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useRef, useEffect, useCallback } from 'react'
+import { useBooking } from '@/context/BookingContext'
 import styles from './Hero.module.css'
 
 const RADIUS       = 230
@@ -9,6 +10,7 @@ const TOUCH_RADIUS = 140
 const SHRINK_FACTOR = 0.85
 
 export default function Hero() {
+  const { open: openBooking } = useBooking()
   const sectionRef    = useRef<HTMLElement>(null)
   const revealWrapRef = useRef<HTMLDivElement>(null)
   const revealRef     = useRef<HTMLDivElement>(null)
@@ -160,7 +162,7 @@ export default function Hero() {
           confiar en tu piel.
         </h1>
         <div className={styles.actions}>
-          <button className={styles.btnPrimary}>Reservar mi experiencia</button>
+          <button className={styles.btnPrimary} onClick={openBooking}>Reservar mi experiencia</button>
           <button className={styles.btnGhost}>
             <span className={styles.playIcon} aria-hidden="true">
               <svg width="9" height="10" viewBox="0 0 9 10" fill="currentColor">

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import BookingButton from './BookingButton'
 import styles from './Approach.module.css'
 
 const steps = [
@@ -29,7 +30,7 @@ export default function Approach() {
               </li>
             ))}
           </ol>
-          <a href="#" className={styles.btn}>Reservar mi primera visita</a>
+          <BookingButton className={styles.btn}>Reservar mi primera visita</BookingButton>
         </div>
 
         <div className={styles.imageCol}>

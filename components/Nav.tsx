@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useBooking } from '@/context/BookingContext'
 import styles from './Nav.module.css'
 
 const links = [
@@ -13,6 +14,7 @@ const links = [
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)
+  const { open: openBooking } = useBooking()
 
   return (
     <>
@@ -32,7 +34,7 @@ export default function Nav() {
           ))}
         </div>
 
-        <button className={styles.cta}>Reservar</button>
+        <button className={styles.cta} onClick={openBooking}>Reservar</button>
 
         {/* Mobile hamburger */}
         <button
@@ -69,7 +71,7 @@ export default function Nav() {
           ))}
         </nav>
 
-        <button className={styles.mobileCta} onClick={() => setIsOpen(false)}>
+        <button className={styles.mobileCta} onClick={() => { setIsOpen(false); openBooking() }}>
           Reservar
         </button>
       </div>

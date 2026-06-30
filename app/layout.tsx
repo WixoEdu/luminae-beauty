@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Jost, Libre_Caslon_Text } from 'next/font/google'
+import { BookingProvider } from '@/context/BookingContext'
 import './globals.css'
 
 const jost = Jost({
@@ -18,14 +19,16 @@ const libreCaslon = Libre_Caslon_Text({
 })
 
 export const metadata: Metadata = {
-  title: 'Luminae — Revela Tu Belleza',
-  description: 'Tratamientos avanzados de cuidado de la piel que revelan tu belleza atemporal',
+  title: 'La Clinique · Medicina Estética & Skin Expertise | Escazú',
+  description: 'Clínica boutique en Escazú, Costa Rica. Skin Expertise by Charlotte Dibon, medicina estética regenerativa y acompañamiento personalizado.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${jost.variable} ${libreCaslon.variable}`}>{children}</body>
+      <body className={`${jost.variable} ${libreCaslon.variable}`}>
+        <BookingProvider>{children}</BookingProvider>
+      </body>
     </html>
   )
 }
