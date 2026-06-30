@@ -14,7 +14,7 @@ const services = [
 ]
 
 export default function Services() {
-  const trackRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLUListElement>(null)
 
   const scroll = (dir: 'prev' | 'next') => {
     if (!trackRef.current) return
