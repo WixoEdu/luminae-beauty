@@ -18,7 +18,7 @@
 .card {
   padding: 40px 36px;
   border: 1px solid rgba(0,0,0,0.09);
-  border-radius: 8px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
