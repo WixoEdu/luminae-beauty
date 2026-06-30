@@ -1,0 +1,115 @@
+.owner {
+  overflow: hidden;
+  border-radius: 32px;
+  margin: 0 24px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 700px;
+}
+
+/* ── Image column ── */
+.imageCol {
+  position: relative;
+}
+
+/* ── Text column ── */
+.textCol {
+  padding: 80px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--white);
+}
+
+.eyebrow {
+  font-size: 10.5px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-size: clamp(32px, 3vw, 52px);
+  margin-bottom: 28px;
+  line-height: 1.1;
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+.bio {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #666;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.signature {
+  margin-bottom: 36px;
+}
+
+.sigName {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--black);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.sigTitle {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid var(--black);
+  border-radius: 100px;
+  padding: 14px 32px;
+  font-size: 11px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--black);
+  align-self: flex-start;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .owner { margin: 0 12px; border-radius: 20px; }
+
+  .inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .imageCol {
+    height: 400px;
+  }
+
+  .textCol {
+    padding: 56px 32px;
+  }
+}

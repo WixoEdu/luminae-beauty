@@ -5,17 +5,54 @@
 }
 
 :root {
-  --bg:    #f0ede9;
-  --black: #0d0d0d;
-  --muted: #9a9a9a;
-  --gold:  #b8975a;
-  --white: #ffffff;
+  /* Brand palette */
+  --bg:       #f0ede9;
+  --black:    #0d0d0d;
+  --muted:    #9a9a9a;
+  --gold:     #b8975a;
+  --white:    #ffffff;
+  --cream:    rgb(238, 233, 226);
+  --accent:   #756960;
+  --alternate:#b09a79;
+  --dark:     #1e1a18;
+
+  /* Typography */
+  --font-body:    var(--font-jost), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading: var(--font-libre), Georgia, 'Times New Roman', serif;
 }
 
 html,
 body {
   height: 100%;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: var(--bg);
+  font-family: var(--font-body);
+  font-weight: 300;
+  background: var(--white);
   overflow-x: hidden;
+  color: var(--black);
+}
+
+/* ── Global typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+em {
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ── Layout utility ── */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
 }
