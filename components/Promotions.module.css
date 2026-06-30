@@ -1,15 +1,27 @@
-.promotions {
-  padding: 120px 0;
+/* ── Outer: provides scroll distance for the pinned animation ── */
+.outer {
+  height: 280vh;
   background: var(--cream);
   border-radius: 32px;
   margin: 0 24px;
+}
+
+/* ── Sticky: fills viewport, clips cards that are off-screen ── */
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .inner {
   display: grid;
   grid-template-columns: 5fr 7fr;
   gap: 64px;
-  align-items: start;
+  align-items: center;
+  width: 100%;
 }
 
 /* ── Title ── */
@@ -26,18 +38,19 @@
   line-height: 1.15;
 }
 
-/* ── Cards ── */
-.cards {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+/* ── Cards stack area ── */
+.cardsCol {
+  position: relative;
+  height: 220px; /* card height; JS translateY piles cards here */
 }
 
+/* Each card is absolute and fills the col; JS drives translateY */
 .card {
-  position: relative;
-  border-radius: 12px;
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
   overflow: hidden;
-  height: 180px;
+  will-change: transform;
   cursor: pointer;
 }
 
@@ -48,18 +61,13 @@
 }
 
 .card:hover .cardBg {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .cardOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 100%);
-  transition: opacity 0.3s;
-}
-
-.card:hover .cardOverlay {
-  opacity: 0.85;
+  background: linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0) 100%);
 }
 
 .cardContent {
@@ -69,37 +77,38 @@
   display: flex;
   align-items: center;
   gap: 32px;
-  padding: 0 36px;
+  padding: 0 40px;
 }
 
 .pct {
   font-family: var(--font-heading);
-  font-size: 36px;
+  font-size: 40px;
   color: var(--white);
   white-space: nowrap;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .pct em {
   color: var(--alternate);
-  font-size: 28px;
+  font-size: 32px;
 }
 
 .desc {
   font-size: 13px;
   font-weight: 300;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.82);
   flex: 1;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .cardBtn {
   display: inline-block;
   text-decoration: none;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.55);
   border-radius: 100px;
-  padding: 10px 22px;
+  padding: 11px 24px;
   font-size: 10px;
   font-family: var(--font-body);
   font-weight: 500;
@@ -116,16 +125,40 @@
   color: var(--black);
 }
 
-/* ── Mobile ── */
+/* ── Mobile: no sticky, simple vertical list ── */
 @media (max-width: 900px) {
-  .promotions { margin: 0 12px; border-radius: 20px; padding: 80px 0; }
+  .outer {
+    height: auto;
+    margin: 0 12px;
+    border-radius: 20px;
+  }
+
+  .sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    padding: 72px 0;
+  }
 
   .inner {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .card { height: 160px; }
+  .cardsCol {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .card {
+    position: relative;
+    height: 160px;
+    /* override any JS transform */
+    transform: none !important;
+  }
 
   .cardContent {
     flex-wrap: wrap;
