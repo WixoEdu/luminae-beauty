@@ -14,7 +14,7 @@ const hours = [
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer id="contacto" className={styles.footer}>
       <div className={`container ${styles.grid}`}>
         {/* Branding */}
         <div className={styles.brand}>

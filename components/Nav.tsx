@@ -5,12 +5,17 @@ import { useBooking } from '@/context/BookingContext'
 import styles from './Nav.module.css'
 
 const links = [
-  { label: 'Skin Expertise', href: '#', active: true },
-  { label: 'Medicina Estética', href: '#' },
-  { label: 'El Método', href: '#' },
-  { label: 'Membresía', href: '#' },
-  { label: 'Contacto', href: '#' },
+  { label: 'Skin Expertise',    href: '#servicios',       active: true },
+  { label: 'Medicina Estética', href: '#skin-expertise' },
+  { label: 'El Método',        href: '#metodo' },
+  { label: 'Membresía',        href: '#membresia' },
+  { label: 'Contacto',         href: '#contacto' },
 ]
+
+function scrollTo(href: string) {
+  const el = document.querySelector(href)
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
+}
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)
@@ -28,6 +33,7 @@ export default function Nav() {
               key={label}
               href={href}
               className={`${styles.link} ${active ? styles.linkActive : ''}`}
+              onClick={e => { e.preventDefault(); scrollTo(href) }}
             >
               {label}
             </a>
@@ -64,7 +70,7 @@ export default function Nav() {
               key={label}
               href={href}
               className={`${styles.mobileLink} ${active ? styles.mobileLinkActive : ''}`}
-              onClick={() => setIsOpen(false)}
+              onClick={e => { e.preventDefault(); setIsOpen(false); scrollTo(href) }}
             >
               {label}
             </a>

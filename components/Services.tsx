@@ -23,7 +23,7 @@ export default function Services() {
   }
 
   return (
-    <section className={styles.services}>
+    <section id="servicios" className={styles.services}>
       <div className={`container ${styles.header}`}>
         <h3 className={styles.heading}>
           Skin Expertise<br />

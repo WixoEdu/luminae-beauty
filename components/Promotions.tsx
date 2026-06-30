@@ -37,7 +37,7 @@ export default function Promotions() {
   }, [])
 
   return (
-    <section className={styles.section}>
+    <section id="membresia" className={styles.section}>
       {/* Title sits above the cards in normal flow */}
       <div className={`container ${styles.titleBlock}`}>
         <p className={styles.eyebrow}>Planes La Clinique</p>

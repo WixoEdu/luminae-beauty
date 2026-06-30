@@ -11,7 +11,7 @@ const steps = [
 
 export default function Approach() {
   return (
-    <section className={styles.approach}>
+    <section id="metodo" className={styles.approach}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.textCol}>
           <p className={styles.eyebrow}>El Método La Clinique</p>

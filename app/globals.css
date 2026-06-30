@@ -21,6 +21,10 @@
   --font-heading: var(--font-libre), Georgia, 'Times New Roman', serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;
