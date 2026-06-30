@@ -152,21 +152,22 @@ export default function Hero() {
       <div className={styles.overlay} />
 
       <div className={styles.content}>
-        <p className={styles.eyebrow}>Luminae Skin Lab</p>
+        <p className={styles.eyebrow}>La Clinique · Escazú, Costa Rica</p>
         <h1 className={styles.title}>
-          Revela Tu<br />
-          <em>Belleza</em><br />
-          Atemporal.
+          Cuidarte no<br />
+          es <em>cambiarte.</em><br />
+          Es volver a<br />
+          confiar en tu piel.
         </h1>
         <div className={styles.actions}>
-          <button className={styles.btnPrimary}>Descubrir</button>
+          <button className={styles.btnPrimary}>Reservar mi experiencia</button>
           <button className={styles.btnGhost}>
             <span className={styles.playIcon} aria-hidden="true">
               <svg width="9" height="10" viewBox="0 0 9 10" fill="currentColor">
                 <path d="M0 0l9 5-9 5V0z" />
               </svg>
             </span>
-            Ver Tratamientos
+            Conocer el método
           </button>
         </div>
         {/* Touch-only hint inline with content */}

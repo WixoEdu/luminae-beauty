@@ -1,6 +1,6 @@
 import styles from './Footer.module.css'
 
-const explore = ['Inicio', 'Nosotros', 'Servicios', 'Blog', 'Contacto']
+const explore = ['Inicio', 'El Método', 'Skin Expertise', 'Membresía Première', 'Contacto']
 
 const hours = [
   { day: 'Lunes',     time: '09:30 – 17:00' },
@@ -18,8 +18,8 @@ export default function Footer() {
       <div className={`container ${styles.grid}`}>
         {/* Branding */}
         <div className={styles.brand}>
-          <p className={styles.logo}>Luminae</p>
-          <p className={styles.tagline}>Belleza atemporal, resultados reales.</p>
+          <p className={styles.logo}>La Clinique</p>
+          <p className={styles.tagline}>Cuidarte no es cambiarte. Es volver a confiar en tu piel.</p>
           <div className={styles.social}>
             {/* Instagram */}
             <a href="#" aria-label="Instagram" className={styles.socialLink}>
@@ -48,9 +48,9 @@ export default function Footer() {
         <div className={styles.col}>
           <p className={styles.colTitle}>Contacto</p>
           <address className={styles.address}>
-            <p>Calle Belleza 12, Madrid 28001</p>
-            <p><a href="tel:+34911234567">+34 911 234 567</a></p>
-            <p><a href="mailto:hola@luminae.es">hola@luminae.es</a></p>
+            <p>Escazú, Costa Rica</p>
+            <p><a href="https://wa.me/50600000000">WhatsApp</a></p>
+            <p><a href="mailto:hola@laclinique.cr">hola@laclinique.cr</a></p>
           </address>
         </div>
 
@@ -69,7 +69,7 @@ export default function Footer() {
       </div>
 
       <div className={`container ${styles.bottom}`}>
-        <p className={styles.copy}>© 2026 Luminae. Todos los derechos reservados.</p>
+        <p className={styles.copy}>© 2026 La Clinique. Todos los derechos reservados.</p>
         <div className={styles.legal}>
           <a href="#">Términos y condiciones</a>
           <a href="#">Política de privacidad</a>

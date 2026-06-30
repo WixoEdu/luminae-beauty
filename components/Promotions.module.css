@@ -1,30 +1,20 @@
-/* ── Outer: provides scroll distance for the pinned animation ── */
-.outer {
-  height: 280vh;
+/* ── Section shell ────────────────────────────────────────────
+   No overflow:hidden here — that would break position:sticky
+   on the child cards. Border-radius clips only the background.
+   ──────────────────────────────────────────────────────────── */
+.section {
   background: var(--cream);
   border-radius: 32px;
   margin: 0 24px;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
-/* ── Sticky: fills viewport, clips cards that are off-screen ── */
-.sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+/* ── Title ─────────────────────────────────────────────────── */
+.titleBlock {
+  padding-bottom: 56px;
 }
 
-.inner {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 64px;
-  align-items: center;
-  width: 100%;
-}
-
-/* ── Title ── */
 .eyebrow {
   font-size: 10.5px;
   letter-spacing: 3px;
@@ -34,137 +24,178 @@
 }
 
 .heading {
-  font-size: clamp(28px, 2.8vw, 44px);
+  font-size: clamp(28px, 3vw, 46px);
   line-height: 1.15;
 }
 
-/* ── Cards stack area ── */
-.cardsCol {
-  position: relative;
-  height: 220px; /* card height; JS translateY piles cards here */
+/* ── Sticky card stack ────────────────────────────────────────
+   Each card is position:sticky; top:0 so it pins to the
+   viewport top as the user scrolls. Cards have increasing
+   z-index so each new card slides UP on top of the previous.
+
+   Wrapper height breakdown (card height = 70vh):
+     • card 1 starts sticky immediately   (0 vh from wrapper top)
+     • card 2 starts sticky at 70 vh
+     • card 3 starts sticky at 140 vh
+     • final "hold" of last card: 70 vh
+     total = 4 × 70vh = 280vh
+   ──────────────────────────────────────────────────────────── */
+.cardsWrapper {
+  height: 280vh;
 }
 
-/* Each card is absolute and fills the col; JS drives translateY */
 .card {
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
+  position: sticky;
+  top: 15vh; /* card 1 */
+  height: 70vh;
+  min-height: 420px;
+  border-radius: 20px;
   overflow: hidden;
-  will-change: transform;
   cursor: pointer;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.cardBg {
+/* Each card sticks 7vh lower than the previous (10% of 70vh)
+   so the prior card's top edge always stays visible */
+.card:nth-child(2) { top: 22vh; }
+.card:nth-child(3) { top: 29vh; }
+
+/* Subtle Ken-Burns on hover (the card's inner bg div isn't used
+   here — Next.js Image wrapper serves as the scale target) */
+.card:hover img {
+  transform: scale(1.04);
+  transition: transform 6s ease;
+}
+
+/* ── Dark gradient overlay (left-heavy for legibility) ──────── */
+.overlay {
   position: absolute;
   inset: 0;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.card:hover .cardBg {
-  transform: scale(1.05);
-}
-
-.cardOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0) 100%);
-}
-
-.cardContent {
-  position: relative;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.30) 45%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
   z-index: 1;
-  height: 100%;
+}
+
+/* ── Glassmorphism content box ──────────────────────────────── */
+.glassBox {
+  position: absolute;
+  z-index: 2;
+  left: 56px;
+  top: 50%;
+
+  /* Starts slightly below + invisible; animates in when card
+     becomes visible (data-visible="true" set by IntersectionObserver) */
+  transform: translateY(calc(-50% + 24px));
+  opacity: 0;
+  transition:
+    transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity   0.65s ease;
+
+  width: clamp(220px, 28%, 340px);
+  background: rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 18px;
+  padding: 40px 36px;
+
   display: flex;
-  align-items: center;
-  gap: 32px;
-  padding: 0 40px;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--white);
+}
+
+/* Active state — triggered by data-visible="true" attribute */
+.card[data-visible='true'] .glassBox {
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.giftIcon {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .pct {
   font-family: var(--font-heading);
-  font-size: 40px;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  line-height: 1.1;
   color: var(--white);
-  white-space: nowrap;
-  flex-shrink: 0;
-  line-height: 1;
 }
 
 .pct em {
-  color: var(--alternate);
-  font-size: 32px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.82em;
 }
 
 .desc {
   font-size: 13px;
   font-weight: 300;
-  color: rgba(255,255,255,0.82);
-  flex: 1;
-  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.7;
 }
 
-.cardBtn {
+.btn {
   display: inline-block;
+  align-self: flex-start;
   text-decoration: none;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.55);
+  border: 1px solid rgba(255, 255, 255, 0.50);
   border-radius: 100px;
   padding: 11px 24px;
-  font-size: 10px;
+  font-size: 10.5px;
   font-family: var(--font-body);
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--white);
-  white-space: nowrap;
-  flex-shrink: 0;
+  margin-top: 4px;
   transition: background 0.2s, border-color 0.2s;
 }
 
-.cardBtn:hover {
-  background: var(--white);
-  color: var(--black);
+.btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.75);
 }
 
-/* ── Mobile: no sticky, simple vertical list ── */
+/* ── Mobile: disable sticky, simple column ──────────────────── */
 @media (max-width: 900px) {
-  .outer {
-    height: auto;
+  .section {
     margin: 0 12px;
     border-radius: 20px;
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 
-  .sticky {
-    position: relative;
-    height: auto;
-    overflow: visible;
-    padding: 72px 0;
-  }
-
-  .inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .cardsCol {
-    position: static;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  .cardsWrapper { height: auto; display: flex; flex-direction: column; gap: 16px; }
 
   .card {
     position: relative;
-    height: 160px;
-    /* override any JS transform */
-    transform: none !important;
+    top: auto;
+    height: 55vh;
+    min-height: 320px;
+    width: 100%;
   }
 
-  .cardContent {
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 0 24px;
+  .glassBox {
+    left: 24px;
+    right: 24px;
+    width: auto;
+    max-width: none;
+    padding: 28px 24px;
+    /* always visible on mobile */
+    opacity: 1;
+    transform: translateY(-50%);
   }
 
-  .cardBtn { display: none; }
+  .card[data-visible='true'] .glassBox {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
 }

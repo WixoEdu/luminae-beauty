@@ -4,10 +4,10 @@ import { useState } from 'react'
 import styles from './Nav.module.css'
 
 const links = [
-  { label: 'Tratamientos', href: '#', active: true },
-  { label: 'Resultados', href: '#' },
-  { label: 'Ciencia', href: '#' },
-  { label: 'Planes', href: '#' },
+  { label: 'Skin Expertise', href: '#', active: true },
+  { label: 'Medicina Estética', href: '#' },
+  { label: 'El Método', href: '#' },
+  { label: 'Membresía', href: '#' },
   { label: 'Contacto', href: '#' },
 ]
 
@@ -17,7 +17,7 @@ export default function Nav() {
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo}>Luminae</div>
+        <div className={styles.logo}>La Clinique</div>
 
         {/* Desktop pill nav */}
         <div className={styles.links}>

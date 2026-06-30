@@ -5,12 +5,12 @@ import { useRef } from 'react'
 import styles from './Services.module.css'
 
 const services = [
-  { title: 'Tratamientos Inyectables',  treatments: ['Rellenos dérmicos', 'Sculptra', 'Botox', 'Daxxify'],        img: '/service_01.jpg' },
-  { title: 'Skincare Avanzado',         treatments: ['Microagujas', 'Morpheus8', 'Peeling químico', 'PRP'],        img: '/service_02.jpg' },
-  { title: 'Tratamientos Exclusivos',   treatments: ['Hydrafacial', 'Lip Perfection', 'Skin Booster', 'Longevity'], img: '/service_03.jpg' },
-  { title: 'Tratamientos Láser',        treatments: ['Láser Carbon Peel', 'Depilación láser', 'Láser Tattoo', 'Body Sculpting'], img: '/service_04.jpg' },
-  { title: 'Rellenos Faciales',         treatments: ['Inyecciones de labios', 'Med Spa', 'Jeringa', 'Juvederm'],  img: '/service_05.jpg' },
-  { title: 'Inyectables Cosméticos',    treatments: ['Toxina botulínica', 'Ácido hialurónico', 'Skin Care', 'Fort Worth'], img: '/service_06.jpg' },
+  { title: 'Skin Expertise by Charlotte', treatments: ['Análisis personalizado de piel', 'Protocolo facial avanzado', 'Sesión de 1h30', 'Seguimiento posterior'],              img: '/service_01.jpg' },
+  { title: 'Membresía Première',          treatments: ['Rito mensual Skin Expertise', 'Acceso prioritario a agenda', 'WhatsApp directo con Charlotte', 'Beneficios exclusivos'], img: '/service_02.jpg' },
+  { title: 'Toxina Botulínica',           treatments: ['Suavizar líneas de expresión', 'Prevención progresiva', 'Resultado fresco y natural', 'Criterio médico'],              img: '/service_03.jpg' },
+  { title: 'Radiesse · Bioestimulación',  treatments: ['Mejora de firmeza facial', 'Calidad y soporte de piel', 'Regeneración de tejidos', 'Resultados progresivos'],          img: '/service_04.jpg' },
+  { title: 'Fillers · Ácido Hialurónico', treatments: ['Armonización facial', 'Restaurar y equilibrar', 'Indicado por valoración médica', 'Resultados naturales'],            img: '/service_05.jpg' },
+  { title: 'Armonización Facial',         treatments: ['Estrategia personalizada', 'Combinación de técnicas médicas', 'Respeto a la expresión', 'Acompañamiento integral'],    img: '/service_06.jpg' },
 ]
 
 export default function Services() {
@@ -26,9 +26,9 @@ export default function Services() {
     <section className={styles.services}>
       <div className={`container ${styles.header}`}>
         <h3 className={styles.heading}>
-          Una Belleza<br />
-          <em>Que Vale Más</em><br />
-          Que una Simple Mirada
+          Skin Expertise<br />
+          <em>&amp; Medicina</em><br />
+          Estética Regenerativa
         </h3>
         <div className={styles.arrows}>
           <button onClick={() => scroll('prev')} aria-label="Anterior" className={styles.arrow}>

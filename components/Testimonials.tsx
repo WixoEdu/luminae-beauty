@@ -2,22 +2,22 @@ import styles from './Testimonials.module.css'
 
 const testimonials = [
   {
-    title: 'Mejoras naturales',
-    text: 'Recomiendo a todos los que buscan mejorar su piel y darse el regalo del rejuvenecimiento y sentirse en su mejor versión.',
-    name: 'LAURA',
-    city: 'Madrid',
+    title: 'Por fin una estrategia para mi piel',
+    text: 'Llegué sin saber bien qué necesitaba y Charlotte me ayudó a entenderlo. Dejé de probar cosas al azar y empecé a cuidar mi piel con criterio real.',
+    name: 'ANDREA',
+    city: 'Escazú',
   },
   {
-    title: 'La aliada de belleza en quien más confío',
-    text: 'Vine por la experiencia y me quedé por la confianza, la claridad y el cuidado. Mi objetivo fue crear resultados que se sienten como la mejor versión de mí.',
-    name: 'SOFÍA',
-    city: 'Barcelona',
+    title: 'La Skin Expert que estaba buscando',
+    text: 'La experiencia Skin Expertise no se parece a nada que haya vivido antes. Charlotte escucha de verdad, diagnostica con honestidad y acompaña cada proceso con naturalidad.',
+    name: 'VALERIA',
+    city: 'Santa Ana',
   },
   {
-    title: 'Una filosofía de autocuidado',
-    text: 'Luminae no es solo un centro estético, es un ritual de bienestar arraigado en la conciencia plena para realzar de forma natural la belleza del rostro y el cuerpo.',
-    name: 'NATALIE',
-    city: 'Valencia',
+    title: 'Un espacio donde me siento en manos correctas',
+    text: 'En La Clinique la experiencia empieza desde que entran a entender tu piel, tu historia y tus expectativas. Es boutique, cercana y muy profesional.',
+    name: 'MARCELA',
+    city: 'San José',
   },
 ]
 

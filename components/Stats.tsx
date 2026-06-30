@@ -60,14 +60,14 @@ export default function Stats() {
           <h3 className={styles.heading}>
             Conéctate con nosotros<br /><em>en instagram</em>
           </h3>
-          <p className={styles.handle}>@luminae_beauty</p>
+          <p className={styles.handle}>@laclinique.cr</p>
           <a href="#" className={styles.btn}>Síguenos</a>
           <div className={styles.instaImages}>
             <div className={styles.instaImg}>
-              <Image src="/stats_01.jpg" alt="Instagram Luminae" fill sizes="260px" style={{ objectFit: 'cover' }} />
+              <Image src="/stats_01.jpg" alt="Instagram La Clinique" fill sizes="260px" style={{ objectFit: 'cover' }} />
             </div>
             <div className={styles.instaImg}>
-              <Image src="/stats_02.jpg" alt="Instagram Luminae" fill sizes="260px" style={{ objectFit: 'cover' }} />
+              <Image src="/stats_02.jpg" alt="Instagram La Clinique" fill sizes="260px" style={{ objectFit: 'cover' }} />
             </div>
           </div>
         </div>

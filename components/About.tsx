@@ -2,9 +2,9 @@ import Image from 'next/image'
 import styles from './About.module.css'
 
 const quickLinks = [
-  'Promociones actuales',
-  'Tratamientos exclusivos',
-  'Nuestro equipo',
+  'Skin Expertise by Charlotte',
+  'Medicina Estética Regenerativa',
+  'El Método La Clinique',
 ]
 
 export default function About() {
@@ -13,7 +13,7 @@ export default function About() {
       <div className={`container ${styles.inner}`}>
         <div className={styles.imageCol}>
           <div className={styles.imgMain}>
-            <Image src="/about_main.jpg" alt="Clínica Luminae" fill sizes="(max-width:768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+            <Image src="/about_main.jpg" alt="La Clinique Escazú" fill sizes="(max-width:768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
           </div>
           <div className={styles.imgSquare}>
             <Image src="/about_square.jpg" alt="Detalle tratamiento" fill sizes="200px" style={{ objectFit: 'cover' }} />
@@ -21,15 +21,15 @@ export default function About() {
         </div>
 
         <div className={styles.textCol}>
-          <p className={styles.eyebrow}>Tratamientos Estéticos en tu Ciudad</p>
+          <p className={styles.eyebrow}>Una forma diferente de vivir la estética</p>
           <h3 className={styles.heading}>
-            Realza tu<br />
-            <em>belleza única</em><br />
-            con tratamientos personalizados<br />
-            y <em>tecnología avanzada</em>
+            Un espacio<br />
+            <em>boutique</em><br />
+            donde cada piel<br />
+            se escucha
           </h3>
           <p className={styles.body}>
-            En Luminae nuestra filosofía se centra en restaurar y resaltar tus rasgos únicos. Creamos equilibrio y armonía para darte una renovada sensación de ti misma.
+            La Clinique nace para devolverle a la estética algo esencial: confianza, criterio y humanidad. Creamos un espacio boutique en Escazú donde cada piel se escucha, se analiza y se acompaña con criterio. No vendemos tratamientos aislados: diseñamos estrategias personalizadas para ayudarte a verte y sentirte mejor, respetando tu naturalidad.
           </p>
           <nav className={styles.quickLinks}>
             {quickLinks.map((label, i) => (
