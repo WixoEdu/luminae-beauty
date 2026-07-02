@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from './Footer.module.css'
 
 const explore = ['Inicio', 'El Método', 'Skin Expertise', 'Membresía Première', 'Contacto']
@@ -18,7 +19,13 @@ export default function Footer() {
       <div className={`container ${styles.grid}`}>
         {/* Branding */}
         <div className={styles.brand}>
-          <p className={styles.logo}>La Clinique</p>
+          <Image
+            src="/logo/la-clinique-logo-white.png"
+            alt="La Clinique"
+            width={140}
+            height={213}
+            className={styles.logoImg}
+          />
           <p className={styles.tagline}>Cuidarte no es cambiarte. Es volver a confiar en tu piel.</p>
           <div className={styles.social}>
             {/* Instagram */}

@@ -11,12 +11,20 @@
 }
 
 .logo {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--black);
+  display: flex;
+  align-items: center;
   user-select: none;
+  padding: 8px 14px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.logoImg {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 /* ── Desktop pill nav ── */
@@ -35,7 +43,7 @@
 .link {
   text-decoration: none;
   color: var(--black);
-  font-size: 13.5px;
+  font-size: 16px;
   font-weight: 400;
   padding: 8px 20px;
   border-radius: 100px;
@@ -61,7 +69,7 @@
   border: none;
   border-radius: 100px;
   padding: 13px 28px;
-  font-size: 13.5px;
+  font-size: 16px;
   font-family: inherit;
   cursor: pointer;
   transition: opacity 0.2s ease;
@@ -177,7 +185,7 @@
   border: none;
   border-radius: 100px;
   padding: 15px 44px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: inherit;
   cursor: pointer;
   transition: opacity 0.2s;

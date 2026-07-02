@@ -15,18 +15,14 @@
 }
 
 /* ── Brand ── */
-.logo {
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 12px;
+.logoImg {
+  height: 64px;
+  width: auto;
+  margin-bottom: 16px;
 }
 
 .tagline {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.7;
   margin-bottom: 28px;
@@ -60,7 +56,7 @@
 .col { display: flex; flex-direction: column; gap: 16px; }
 
 .colTitle {
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--alternate);
@@ -76,7 +72,7 @@
 
 .colLink {
   text-decoration: none;
-  font-size: 13.5px;
+  font-size: 16px;
   font-weight: 300;
   color: rgba(255,255,255,0.65);
   transition: color 0.2s;
@@ -90,7 +86,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 13.5px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.6;
 }
@@ -114,7 +110,7 @@
 .hourRow {
   display: flex;
   justify-content: space-between;
-  font-size: 12.5px;
+  font-size: 16px;
   font-weight: 300;
   color: rgba(255,255,255,0.60);
   gap: 8px;
@@ -132,7 +128,7 @@
 }
 
 .copy {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 300;
   color: rgba(255,255,255,0.4);
 }
@@ -143,7 +139,7 @@
 }
 
 .legal a {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 300;
   color: rgba(255,255,255,0.4);
   text-decoration: none;

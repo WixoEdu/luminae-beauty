@@ -53,7 +53,7 @@
 }
 
 .brand {
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--accent);
@@ -100,7 +100,7 @@
   flex: 1;
   position: relative;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 0.5px;
 }
 
@@ -119,14 +119,14 @@
 .pStep.pDone   { color: var(--accent); }
 
 .pDot {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 1.5px solid currentColor;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 16px;
   font-weight: 600;
   flex-shrink: 0;
   transition: background 0.2s, color 0.2s;
@@ -145,7 +145,7 @@
 }
 
 .pLabel {
-  font-size: 10.5px;
+  font-size: 16px;
   white-space: nowrap;
 }
 
@@ -176,7 +176,7 @@
   border: 1.5px solid transparent;
   border-radius: 12px;
   padding: 16px 18px;
-  font-size: 13px;
+  font-size: 16px;
   font-family: var(--font-body);
   font-weight: 400;
   color: var(--dark);
@@ -237,7 +237,7 @@
 }
 
 .calDayNames span {
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--accent);
@@ -255,7 +255,7 @@
   border: none;
   border-radius: 8px;
   background: var(--white);
-  font-size: 13px;
+  font-size: 16px;
   font-family: var(--font-body);
   color: var(--dark);
   cursor: pointer;
@@ -288,7 +288,7 @@
 }
 
 .calHint {
-  font-size: 11px;
+  font-size: 16px;
   color: var(--muted);
   text-align: center;
 }
@@ -298,7 +298,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
   padding: 24px 0;
 }
@@ -314,7 +314,7 @@
 }
 @keyframes spin { to { transform: rotate(360deg) } }
 
-.noSlots { color: var(--muted); font-size: 14px; padding: 12px 0; }
+.noSlots { color: var(--muted); font-size: 16px; padding: 12px 0; }
 
 .slotsGrid {
   display: grid;
@@ -348,7 +348,7 @@
 }
 
 .slotTag {
-  font-size: 9px;
+  font-size: 16px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--accent);
@@ -375,7 +375,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 11px;
+  font-size: 16px;
   color: var(--muted);
 }
 
@@ -398,7 +398,7 @@
   background: var(--cream);
   border-radius: 12px;
   padding: 14px 18px;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--dark);
 }
 
@@ -417,7 +417,7 @@
 }
 
 .field span {
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--accent);
@@ -429,7 +429,7 @@
   border: 1.5px solid rgba(0,0,0,0.12);
   border-radius: 10px;
   padding: 12px 14px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--font-body);
   font-weight: 300;
   color: var(--dark);
@@ -451,7 +451,7 @@
 .fieldFull { grid-column: 1 / -1; }
 
 .apiError {
-  font-size: 13px;
+  font-size: 16px;
   color: #b94f4f;
   background: #fdf2f2;
   border: 1px solid #e8c2c2;
@@ -471,7 +471,7 @@
 .backBtn {
   background: none;
   border: none;
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--muted);
@@ -488,7 +488,7 @@
   border: none;
   border-radius: 100px;
   padding: 14px 32px;
-  font-size: 12px;
+  font-size: 16px;
   font-family: var(--font-body);
   font-weight: 500;
   letter-spacing: 1.5px;
@@ -529,7 +529,7 @@
 }
 
 .confSub {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 300;
   color: #666;
   max-width: 320px;
@@ -548,7 +548,7 @@
 }
 
 .confService {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--dark);
 }
@@ -560,7 +560,7 @@
 }
 
 .confName {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 300;
   color: var(--muted);
 }

@@ -69,11 +69,11 @@
   position: absolute;
   bottom: 10%;
   left: 6%;
-  max-width: 400px;
+  max-width: 430px;
 }
 
 .eyebrow {
-  font-size: 10.5px;
+  font-size: 16px;
   letter-spacing: 3.5px;
   text-transform: uppercase;
   color: var(--accent);
@@ -106,7 +106,7 @@
   border: none;
   border-radius: 100px;
   padding: 15px 36px;
-  font-size: 13.5px;
+  font-size: 16px;
   font-family: inherit;
   cursor: pointer;
   transition: opacity 0.2s ease;
@@ -120,7 +120,7 @@
   background: none;
   border: none;
   color: var(--dark);
-  font-size: 13.5px;
+  font-size: 16px;
   font-family: inherit;
   cursor: pointer;
   display: flex;
@@ -148,7 +148,7 @@
 /* Touch hint — shown only on mobile */
 .touchHint {
   display: none;
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--accent);
@@ -173,7 +173,7 @@
 }
 
 .hint p {
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--accent);
@@ -194,7 +194,7 @@
 }
 
 .scrollIndicator span {
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--accent);
@@ -241,7 +241,7 @@
   }
 
   .btnGhost {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   /* Show touch hint, hide desktop hint */

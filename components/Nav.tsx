@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useBooking } from '@/context/BookingContext'
 import styles from './Nav.module.css'
 
@@ -24,7 +25,16 @@ export default function Nav() {
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo}>La Clinique</div>
+        <div className={styles.logo}>
+          <Image
+            src="/logo/la-clinique-logo.png"
+            alt="La Clinique"
+            width={300}
+            height={202}
+            className={styles.logoImg}
+            priority
+          />
+        </div>
 
         {/* Desktop pill nav */}
         <div className={styles.links}>
