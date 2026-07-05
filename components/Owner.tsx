@@ -6,7 +6,7 @@ export default function Owner() {
     <section id="skin-expertise" className={styles.owner}>
       <div className={styles.inner}>
         <div className={styles.imageCol}>
-          <Image src="/owner.jpg" alt="Charlotte Dibon" fill sizes="(max-width:900px) 100vw, 50vw" style={{ objectFit: 'cover', objectPosition: 'center top' }} />
+          <Image src="/owner.png" alt="Charlotte Dibon" fill sizes="(max-width:900px) 100vw, 50vw" style={{ objectFit: 'cover', objectPosition: 'center top' }} />
         </div>
 
         <div className={styles.textCol}>

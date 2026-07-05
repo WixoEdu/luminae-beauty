@@ -16,13 +16,12 @@
   user-select: none;
   padding: 8px 14px;
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.80);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
 .logoImg {
-  height: 48px;
+  height: 36px;
   width: auto;
   display: block;
 }
