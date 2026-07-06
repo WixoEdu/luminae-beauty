@@ -1,0 +1,146 @@
+.section {
+  padding: 100px 0 120px;
+  background: var(--white);
+}
+
+/* ── Row ── */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 64px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.row:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+/* ── Image ── */
+.imageCol {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* ── Text ── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--alternate);
+}
+
+.title {
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.25;
+  color: var(--black);
+  margin-bottom: 22px;
+}
+
+.excerpt {
+  font-size: 17px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 32px;
+}
+
+/* ── Share ── */
+.share {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.shareLabel {
+  font-size: 16px;
+  color: var(--black);
+}
+
+.shareIcons {
+  display: flex;
+  gap: 10px;
+}
+
+.shareBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  transition: background 0.2s;
+}
+
+.shareBtn:hover {
+  background: var(--dark);
+}
+
+/* ── Continue reading ── */
+.continueBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: 100px;
+  padding: 15px 30px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.continueBtn:hover {
+  opacity: 0.85;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 0;
+  }
+
+  /* Always show image first, then text, regardless of alternation */
+  .row > .imageCol {
+    order: -1;
+  }
+
+  .imageCol {
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 64px 0 80px;
+  }
+}
