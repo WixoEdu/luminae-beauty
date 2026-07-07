@@ -1,0 +1,75 @@
+.section {
+  padding: 100px 24px 0;
+  background: var(--bg);
+}
+
+.frame {
+  position: relative;
+  height: clamp(380px, 48vh, 500px);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.tint {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, rgba(30, 40, 30, 0.55) 0%, rgba(20, 24, 18, 0.75) 100%);
+}
+
+.glass {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.eyebrow {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 24px;
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 34px);
+  line-height: 1.4;
+  color: var(--white);
+  max-width: 780px;
+  margin-bottom: 32px;
+}
+
+.name {
+  font-size: 17px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.role {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 16px 0;
+  }
+
+  .glass {
+    inset: 16px;
+    padding: 28px 20px;
+  }
+}

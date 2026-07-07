@@ -3,14 +3,17 @@
 import { useState, useEffect, useCallback } from 'react'
 import styles from './BookingModal.module.css'
 import { SLOTS_BY_DAY, SERVICES, MONTH_NAMES } from '@/lib/slots'
+import AdvisoryForm, { type AdvisoryValues } from './AdvisoryForm'
 
 interface Props {
   isOpen: boolean
   onClose: () => void
 }
 
+type Tab = 'booking' | 'advisory'
 type Step = 'service' | 'calendar' | 'time' | 'details' | 'confirmation'
 
+const STEPS = ['service', 'calendar', 'time', 'details'] as const
 const DAY_NAMES = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
 
 function fmt(d: Date) {
@@ -18,7 +21,9 @@ function fmt(d: Date) {
 }
 
 export default function BookingModal({ isOpen, onClose }: Props) {
+  const [tab, setTab]                 = useState<Tab>('advisory')
   const [step, setStep]               = useState<Step>('service')
+  const [maxStepIdx, setMaxStepIdx]   = useState(0)
   const [service, setService]         = useState('')
   const [date, setDate]               = useState<Date | null>(null)
   const [month, setMonth]             = useState(() => {
@@ -57,8 +62,18 @@ export default function BookingModal({ isOpen, onClose }: Props) {
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
+  // Track the furthest step reached so completed steps stay reachable
+  // even after navigating back to an earlier one.
+  useEffect(() => {
+    if (step === 'confirmation') return
+    const idx = STEPS.indexOf(step as typeof STEPS[number])
+    setMaxStepIdx(m => Math.max(m, idx))
+  }, [step])
+
   const reset = useCallback(() => {
+    setTab('advisory')
     setStep('service')
+    setMaxStepIdx(0)
     setService('')
     setDate(null)
     setTime('')
@@ -71,6 +86,30 @@ export default function BookingModal({ isOpen, onClose }: Props) {
     reset()
     onClose()
   }, [reset, onClose])
+
+  const handleAdvisoryComplete = useCallback((values: AdvisoryValues) => {
+    setForm(f => ({
+      ...f,
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      notes: values.goal ? `Objetivo: ${values.goal}` : f.notes,
+    }))
+    setTab('booking')
+  }, [])
+
+  // Unified "back" navigation: steps back through the booking wizard,
+  // then back into the advisory form once past the first step.
+  const goBackStep = useCallback(() => {
+    setStep(current => {
+      const idx = STEPS.indexOf(current as typeof STEPS[number])
+      if (idx <= 0) {
+        setTab('advisory')
+        return current
+      }
+      return STEPS[idx - 1]
+    })
+  }, [])
 
   const isDisabled = (d: Date) => {
     const today = new Date(); today.setHours(0,0,0,0)
@@ -118,7 +157,6 @@ export default function BookingModal({ isOpen, onClose }: Props) {
   }
 
   const slots = date ? (SLOTS_BY_DAY[date.getDay()] ?? []) : []
-  const STEPS = ['service', 'calendar', 'time', 'details'] as const
   const stepIdx = STEPS.indexOf(step as typeof STEPS[number])
 
   if (!isOpen) return null
@@ -129,9 +167,17 @@ export default function BookingModal({ isOpen, onClose }: Props) {
 
         {/* ── Header ── */}
         <div className={styles.header}>
-          <div>
-            <p className={styles.brand}>La Clinique</p>
-            <h2 className={styles.title}>Reservar experiencia</h2>
+          <div className={styles.headerLeft}>
+            {tab === 'booking' && step !== 'confirmation' && (
+              <button className={styles.backHeaderBtn} onClick={goBackStep} type="button">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M10 3L5 8l5 5"/></svg>
+                <span>Atrás</span>
+              </button>
+            )}
+            <div>
+              <p className={styles.brand}>La Clinique</p>
+              <h2 className={styles.title}>{tab === 'booking' ? 'Hacer Cita' : 'Asesoría Personalizada'}</h2>
+            </div>
           </div>
           <button className={styles.closeBtn} onClick={handleClose} aria-label="Cerrar">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -140,33 +186,12 @@ export default function BookingModal({ isOpen, onClose }: Props) {
           </button>
         </div>
 
-        {/* ── Progress bar ── */}
-        {step !== 'confirmation' && (
-          <div className={styles.progress}>
-            {(['Servicio', 'Fecha', 'Horario', 'Datos'] as const).map((label, i) => (
-              <div
-                key={label}
-                className={[
-                  styles.pStep,
-                  i < stepIdx ? styles.pDone : '',
-                  i === stepIdx ? styles.pActive : '',
-                ].join(' ')}
-              >
-                <div className={styles.pDot}>
-                  {i < stepIdx
-                    ? <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg>
-                    : i + 1
-                  }
-                </div>
-                <span className={styles.pLabel}>{label}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
         {/* ── Body ── */}
         <div className={styles.body}>
-
+          {tab === 'advisory' ? (
+            <AdvisoryForm onComplete={handleAdvisoryComplete} />
+          ) : (
+          <>
           {/* Step 1 — Service */}
           {step === 'service' && (
             <div className={styles.stepWrap}>
@@ -286,7 +311,6 @@ export default function BookingModal({ isOpen, onClose }: Props) {
                 <span className={styles.legendFree} />Disponible
                 <span className={styles.legendBusy} />Ocupado
               </div>
-              <button className={styles.backBtn} onClick={() => setStep('calendar')}>← Cambiar fecha</button>
             </div>
           )}
 
@@ -347,7 +371,6 @@ export default function BookingModal({ isOpen, onClose }: Props) {
               {apiError && <p className={styles.apiError}>{apiError}</p>}
 
               <div className={styles.detailsActions}>
-                <button className={styles.backBtn} onClick={() => setStep('time')}>← Cambiar horario</button>
                 <button
                   className={styles.submitBtn}
                   onClick={submit}
@@ -379,8 +402,40 @@ export default function BookingModal({ isOpen, onClose }: Props) {
               <button className={styles.submitBtn} onClick={handleClose}>Cerrar</button>
             </div>
           )}
-
+          </>
+          )}
         </div>
+
+        {/* ── Progress bar ── */}
+        {tab === 'booking' && step !== 'confirmation' && (
+          <div className={styles.progress}>
+            {(['Servicio', 'Fecha', 'Horario', 'Datos'] as const).map((label, i) => {
+              const clickable = i <= maxStepIdx && i !== stepIdx
+              return (
+                <button
+                  key={label}
+                  type="button"
+                  disabled={!clickable}
+                  onClick={() => setStep(STEPS[i])}
+                  className={[
+                    styles.pStep,
+                    i < stepIdx ? styles.pDone : '',
+                    i === stepIdx ? styles.pActive : '',
+                    clickable ? styles.pClickable : '',
+                  ].join(' ')}
+                >
+                  <div className={styles.pDot}>
+                    {i < stepIdx
+                      ? <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg>
+                      : i + 1
+                    }
+                  </div>
+                  <span className={styles.pLabel}>{label}</span>
+                </button>
+              )
+            })}
+          </div>
+        )}
       </div>
     </div>
   )

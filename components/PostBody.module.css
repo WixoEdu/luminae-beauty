@@ -1,0 +1,51 @@
+.article {
+  max-width: 720px;
+}
+
+.paragraph {
+  font-size: 17px;
+  line-height: 1.9;
+  font-weight: 300;
+  color: #444;
+  margin-bottom: 26px;
+}
+
+.paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ── Share ── */
+.share {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.shareLabel {
+  font-size: 16px;
+  color: var(--black);
+}
+
+.shareIcons {
+  display: flex;
+  gap: 10px;
+}
+
+.shareBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  transition: background 0.2s;
+}
+
+.shareBtn:hover {
+  background: var(--dark);
+}

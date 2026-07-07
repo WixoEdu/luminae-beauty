@@ -1,50 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import { posts } from '@/lib/posts'
 import styles from './BlogGrid.module.css'
-
-const posts = [
-  {
-    date: '02 JULIO 2026',
-    categories: ['Skin Expertise', 'Rutina'],
-    title: 'Cómo diseñar una rutina de piel con criterio, no por moda',
-    excerpt: 'Por qué copiar la rutina de 10 pasos de las redes sociales no siempre es la respuesta, y qué preguntar antes de sumar un producto nuevo a tu día a día...',
-    img: '/service_01.jpg',
-  },
-  {
-    date: '24 JUNIO 2026',
-    categories: ['Medicina Estética', 'Toxina Botulínica'],
-    title: 'Toxina botulínica: mitos y realidades que debes conocer',
-    excerpt: 'Desmontamos las ideas más comunes sobre la toxina botulínica y explicamos qué esperar realmente de un tratamiento bien indicado y con criterio médico...',
-    img: '/service_03.jpg',
-  },
-  {
-    date: '15 JUNIO 2026',
-    categories: ['El Método', 'Consulta'],
-    title: 'La primera consulta: qué sucede antes de cualquier tratamiento',
-    excerpt: 'En La Clinique todo empieza con una escucha real. Te contamos cómo es el proceso de valoración antes de definir cualquier estrategia personalizada...',
-    img: '/approach.jpg',
-  },
-  {
-    date: '06 JUNIO 2026',
-    categories: ['Bioestimulación', 'Radiesse'],
-    title: 'Radiesse y la firmeza de la piel: qué resultados son realistas',
-    excerpt: 'Hablamos de tiempos, expectativas y cuidados posteriores a un tratamiento de bioestimulación de colágeno con resultados progresivos...',
-    img: '/service_04.jpg',
-  },
-  {
-    date: '29 MAYO 2026',
-    categories: ['Membresía', 'Ritual'],
-    title: 'Por qué el cuidado de la piel funciona mejor como ritual, no evento',
-    excerpt: 'La constancia cambia los resultados. Así acompaña la Membresía Première el proceso a largo plazo de cada clienta que confía en nosotros...',
-    img: '/stats_01.jpg',
-  },
-  {
-    date: '18 MAYO 2026',
-    categories: ['Armonización Facial', 'Criterio'],
-    title: 'Naturalidad ante todo: el criterio detrás de cada tratamiento',
-    excerpt: 'Qué significa realmente "verse natural" y cómo se traduce ese principio en cada decisión clínica que tomamos junto a cada clienta...',
-    img: '/service_06.jpg',
-  },
-]
 
 function ClockIcon() {
   return (
@@ -112,10 +69,10 @@ function PostContent({ post }: { post: typeof posts[number] }) {
           ))}
         </div>
       </div>
-      <a href="#" className={styles.continueBtn}>
+      <Link href={`/blog/${post.slug}`} className={styles.continueBtn}>
         <span>Seguir leyendo</span>
         <ArrowIcon />
-      </a>
+      </Link>
     </div>
   )
 }

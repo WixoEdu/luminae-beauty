@@ -8,10 +8,10 @@ import { useBooking } from '@/context/BookingContext'
 import styles from './Nav.module.css'
 
 const links = [
-  { label: 'Skin Expertise',    href: '#servicios' },
+  { label: 'Inicio',           href: '/' },
+  { label: 'Skin Expertise',    href: '/skin-expertise' },
   { label: 'Medicina Estética', href: '#skin-expertise' },
   { label: 'El Método',        href: '#metodo' },
-  { label: 'Membresía',        href: '#membresia' },
   { label: 'Blog',             href: '/blog' },
   { label: 'Contacto',         href: '#contacto' },
 ]
@@ -26,8 +26,7 @@ export default function Nav() {
   const { open: openBooking } = useBooking()
   const pathname = usePathname()
 
-  const isActive = (href: string) =>
-    href === '/blog' ? pathname === '/blog' : pathname === '/' && href === '#servicios'
+  const isActive = (href: string) => (href.startsWith('/') ? pathname === href : false)
 
   const handleAnchorClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault()
@@ -42,7 +41,7 @@ export default function Nav() {
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo}>
+        <Link href="/" className={styles.logo} onClick={() => setIsOpen(false)}>
           <Image
             src="/logo/la-clinique-logo.png"
             alt="La Clinique"
@@ -51,7 +50,7 @@ export default function Nav() {
             className={styles.logoImg}
             priority
           />
-        </div>
+        </Link>
 
         {/* Desktop pill nav */}
         <div className={styles.links}>
