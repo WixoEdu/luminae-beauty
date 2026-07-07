@@ -25,7 +25,8 @@ export default function Owner() {
             <p className={styles.sigName}>CHARLOTTE DIBON</p>
             <p className={styles.sigTitle}>Skin Expert · CIDESCO Internacional</p>
           </div>
-          <a href="#" className={styles.btn}>Conocer Skin Expertise</a>
+          {/* Oculto temporalmente a pedido del cliente — volver a mostrar cuando se indique */}
+          {/* <a href="#" className={styles.btn}>Conocer Skin Expertise</a> */}
         </div>
       </div>
     </section>

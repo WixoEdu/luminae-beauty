@@ -29,7 +29,7 @@ export default function Footer() {
           <p className={styles.tagline}>Cuidarte no es cambiarte. Es volver a confiar en tu piel.</p>
           <div className={styles.social}>
             {/* Instagram */}
-            <a href="#" aria-label="Instagram" className={styles.socialLink}>
+            <a href="https://www.instagram.com/lacliniquecr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialLink}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
             </a>
             {/* Facebook */}

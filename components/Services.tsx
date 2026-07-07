@@ -45,14 +45,13 @@ export default function Services() {
           {services.map((s) => (
             <li key={s.title} className={styles.card}>
               <div className={styles.cardImg}>
-                <Image src={s.img} alt={s.title} fill sizes="320px" style={{ objectFit: 'cover' }} />
+                <Image src={s.img} alt={s.title} fill sizes="(max-width:768px) 280px, 380px" style={{ objectFit: 'cover' }} />
               </div>
               <div className={styles.cardBody}>
                 <h5 className={styles.cardTitle}>{s.title}</h5>
                 <ul className={styles.treatments}>
                   {s.treatments.map((t) => <li key={t}>{t}</li>)}
                 </ul>
-                <a href="#" className={styles.cardBtn}>Ver más</a>
               </div>
             </li>
           ))}

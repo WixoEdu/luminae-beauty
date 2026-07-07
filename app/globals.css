@@ -21,12 +21,9 @@
   --font-heading: var(--font-libre), Georgia, 'Times New Roman', serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 html,
 body {
+  scroll-behavior: smooth;
   height: 100%;
   font-family: var(--font-body);
   font-weight: 300;

@@ -26,8 +26,8 @@ export default function SkinExpertiseConnect() {
           <h3 className={styles.heading}>
             Conéctate con nosotros<br /><em>en instagram</em>
           </h3>
-          <p className={styles.handle}>@laclinique.cr</p>
-          <a href="#" className={styles.btn}>
+          <p className={styles.handle}>@lacliniquecr</p>
+          <a href="https://www.instagram.com/lacliniquecr/" target="_blank" rel="noopener noreferrer" className={styles.btn}>
             <span>Síguenos</span>
             <span className={styles.iconCircle}><InstagramIcon /></span>
           </a>

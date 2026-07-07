@@ -163,7 +163,10 @@ export default function Hero() {
         </h1>
         <div className={styles.actions}>
           <button className={styles.btnPrimary} onClick={openBooking}>Reservar mi experiencia</button>
-          <button className={styles.btnGhost}>
+          <button
+            className={styles.btnGhost}
+            onClick={() => document.querySelector('#metodo')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             <span className={styles.playIcon} aria-hidden="true">
               <svg width="9" height="10" viewBox="0 0 9 10" fill="currentColor">
                 <path d="M0 0l9 5-9 5V0z" />
