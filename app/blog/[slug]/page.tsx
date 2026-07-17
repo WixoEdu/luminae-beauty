@@ -5,16 +5,19 @@ import PostHero from '@/components/PostHero'
 import PostBody from '@/components/PostBody'
 import PostSidebar from '@/components/PostSidebar'
 import Footer from '@/components/Footer'
-import { posts, getPostBySlug, getRecentPosts } from '@/lib/posts'
+import { getAllPosts, getCategories, getPostBySlug, getRecentPosts } from '@/lib/posts'
 import styles from './page.module.css'
 
-export function generateStaticParams() {
+export const revalidate = 60
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts()
   return posts.map(post => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = await getPostBySlug(slug)
   if (!post) return {}
 
   return {
@@ -25,10 +28,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = await getPostBySlug(slug)
   if (!post) notFound()
 
-  const recentPosts = getRecentPosts(post.slug)
+  const [recentPosts, categories] = await Promise.all([
+    getRecentPosts(post.slug),
+    getCategories(),
+  ])
 
   return (
     <>
@@ -37,7 +43,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <section className={styles.section}>
         <div className={`container ${styles.layout}`}>
           <PostBody post={post} />
-          <PostSidebar recentPosts={recentPosts} />
+          <PostSidebar recentPosts={recentPosts} categories={categories} />
         </div>
       </section>
       <Footer />

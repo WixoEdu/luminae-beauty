@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Post } from '@/lib/posts'
-import { getCategories } from '@/lib/posts'
 import styles from './PostSidebar.module.css'
 
-export default function PostSidebar({ recentPosts }: { recentPosts: Post[] }) {
-  const categories = getCategories()
+type Category = { name: string; count: number }
 
+export default function PostSidebar({ recentPosts, categories }: { recentPosts: Post[]; categories: Category[] }) {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.block}>

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { posts } from '@/lib/posts'
+import type { Post } from '@/lib/posts'
 import styles from './BlogGrid.module.css'
 
 function ClockIcon() {
@@ -44,7 +44,7 @@ const shareLinks = [
   },
 ]
 
-function PostImage({ post }: { post: typeof posts[number] }) {
+function PostImage({ post }: { post: Post }) {
   return (
     <div className={styles.imageCol}>
       <Image src={post.img} alt={post.title} fill sizes="(max-width:900px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
@@ -52,7 +52,7 @@ function PostImage({ post }: { post: typeof posts[number] }) {
   )
 }
 
-function PostContent({ post }: { post: typeof posts[number] }) {
+function PostContent({ post }: { post: Post }) {
   return (
     <div className={styles.textCol}>
       <div className={styles.meta}>
@@ -77,12 +77,22 @@ function PostContent({ post }: { post: typeof posts[number] }) {
   )
 }
 
-export default function BlogGrid() {
+export default function BlogGrid({ posts }: { posts: Post[] }) {
+  if (posts.length === 0) {
+    return (
+      <section className={styles.section}>
+        <div className="container">
+          <p className={styles.excerpt}>Pronto publicaremos nuevos artículos aquí.</p>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className={styles.section}>
       <div className="container">
         {posts.map((post, i) => (
-          <article key={post.title} className={styles.row}>
+          <article key={post.slug} className={styles.row}>
             {i % 2 === 0 ? (
               <>
                 <PostImage post={post} />

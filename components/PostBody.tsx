@@ -27,9 +27,7 @@ const shareLinks = [
 export default function PostBody({ post }: { post: Post }) {
   return (
     <article className={styles.article}>
-      {post.content.map((paragraph, i) => (
-        <p key={i} className={styles.paragraph}>{paragraph}</p>
-      ))}
+      <div className={styles.content} dangerouslySetInnerHTML={{ __html: post.content }} />
 
       <div className={styles.share}>
         <span className={styles.shareLabel}>Compartir</span>
