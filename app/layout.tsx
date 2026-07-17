@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Jost, Libre_Caslon_Text } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { BookingProvider } from '@/context/BookingContext'
 import './globals.css'
 
@@ -29,6 +30,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${jost.variable} ${libreCaslon.variable}`}>
         <BookingProvider>{children}</BookingProvider>
       </body>
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
     </html>
   )
 }
