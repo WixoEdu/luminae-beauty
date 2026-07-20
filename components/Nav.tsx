@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { useBooking } from '@/context/BookingContext'
 import styles from './Nav.module.css'
 
-const links = [
+export const navLinks = [
   { label: 'Inicio',           href: '/' },
   { label: 'Skin Expertise',    href: '/skin-expertise' },
   { label: 'Medicina Estética', href: '#skin-expertise' },
@@ -16,7 +16,7 @@ const links = [
   { label: 'Contacto',         href: '#contacto' },
 ]
 
-function scrollTo(href: string) {
+export function scrollTo(href: string) {
   const el = document.querySelector(href)
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
@@ -54,7 +54,7 @@ export default function Nav() {
 
         {/* Desktop pill nav */}
         <div className={styles.links}>
-          {links.map(({ label, href }) =>
+          {navLinks.map(({ label, href }) =>
             href.startsWith('#') ? (
               <a
                 key={label}
@@ -101,7 +101,7 @@ export default function Nav() {
         </button>
 
         <nav className={styles.mobileLinks}>
-          {links.map(({ label, href }) =>
+          {navLinks.map(({ label, href }) =>
             href.startsWith('#') ? (
               <a
                 key={label}

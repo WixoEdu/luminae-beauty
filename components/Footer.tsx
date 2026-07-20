@@ -1,19 +1,33 @@
+'use client'
+
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { navLinks, scrollTo } from './Nav'
 import styles from './Footer.module.css'
 
-const explore = ['Inicio', 'El Método', 'Skin Expertise', 'Membresía Première', 'Contacto']
-
 const hours = [
-  { day: 'Lunes',     time: '09:30 – 17:00' },
-  { day: 'Martes',    time: '09:30 – 19:00' },
-  { day: 'Miércoles', time: '09:30 – 18:00' },
-  { day: 'Jueves',    time: '10:00 – 20:00' },
-  { day: 'Viernes',   time: '09:30 – 19:00' },
-  { day: 'Sábado',    time: '09:00 – 16:00' },
+  { day: 'Lunes',     time: '10AM a 6PM' },
+  { day: 'Martes',    time: '10AM a 6PM' },
+  { day: 'Miércoles', time: '10AM a 6PM' },
+  { day: 'Jueves',    time: '10AM a 6PM' },
+  { day: 'Viernes',   time: '10AM a 6PM' },
+  { day: 'Sábado',    time: '7AM a 4PM' },
   { day: 'Domingo',   time: 'Cerrado' },
 ]
 
 export default function Footer() {
+  const pathname = usePathname()
+
+  const handleAnchorClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault()
+    if (pathname === '/') {
+      scrollTo(href)
+    } else {
+      window.location.href = `/${href}`
+    }
+  }
+
   return (
     <footer id="contacto" className={styles.footer}>
       <div className={`container ${styles.grid}`}>
@@ -32,13 +46,9 @@ export default function Footer() {
             <a href="https://www.instagram.com/lacliniquecr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialLink}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
             </a>
-            {/* Facebook */}
-            <a href="#" aria-label="Facebook" className={styles.socialLink}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            {/* X / Twitter */}
-            <a href="#" aria-label="X" className={styles.socialLink}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            {/* WhatsApp */}
+            <a href="https://wa.me/50689700298" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className={styles.socialLink}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm5.8 14.07c-.24.68-1.4 1.3-1.93 1.37-.5.07-1.12.1-1.8-.11-.42-.13-.95-.3-1.63-.6-2.87-1.24-4.74-4.15-4.88-4.34-.14-.19-1.17-1.56-1.17-2.98s.73-2.11 1-2.4c.24-.27.53-.34.7-.34.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.15.07.15.11.32.02.51-.09.19-.14.31-.27.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.89 1.05.93 1.93 1.22 2.2 1.36.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.86.27.14.45.2.51.32.07.11.07.65-.17 1.3z"/></svg>
             </a>
           </div>
         </div>
@@ -47,7 +57,22 @@ export default function Footer() {
         <div className={styles.col}>
           <p className={styles.colTitle}>Explorar</p>
           <nav className={styles.colLinks}>
-            {explore.map((l) => <a key={l} href="#" className={styles.colLink}>{l}</a>)}
+            {navLinks.map(({ label, href }) =>
+              href.startsWith('#') ? (
+                <a
+                  key={label}
+                  href={href}
+                  className={styles.colLink}
+                  onClick={e => handleAnchorClick(e, href)}
+                >
+                  {label}
+                </a>
+              ) : (
+                <Link key={label} href={href} className={styles.colLink}>
+                  {label}
+                </Link>
+              )
+            )}
           </nav>
         </div>
 
@@ -56,8 +81,8 @@ export default function Footer() {
           <p className={styles.colTitle}>Contacto</p>
           <address className={styles.address}>
             <p>Escazú, Costa Rica</p>
-            <p><a href="https://wa.me/50600000000">WhatsApp</a></p>
-            <p><a href="mailto:hola@laclinique.cr">hola@laclinique.cr</a></p>
+            <p><a href="https://wa.me/50689700298" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+            <p><a href="mailto:admin@lacliniquecr.com">admin@lacliniquecr.com</a></p>
           </address>
         </div>
 
