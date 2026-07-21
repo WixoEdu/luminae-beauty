@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useContext, useState, type ReactNode } from 'react'
-import BookingModal from '@/components/BookingModal'
+import SkinQuizModal from '@/components/SkinQuizModal'
 
 interface BookingContextValue {
   open: () => void
@@ -19,7 +19,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
   return (
     <BookingContext.Provider value={{ open: () => setIsOpen(true) }}>
       {children}
-      <BookingModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <SkinQuizModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </BookingContext.Provider>
   )
 }
