@@ -80,7 +80,7 @@ export default function Footer() {
         <div className={styles.col}>
           <p className={styles.colTitle}>Contacto</p>
           <address className={styles.address}>
-            <p>Escazú, Costa Rica</p>
+            <p>Momentum Escazú, Autopista Próspero Fernández, San Rafael, San José, Costa Rica</p>
             <p><a href="https://wa.me/50689700298" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
             <p><a href="mailto:admin@lacliniquecr.com">admin@lacliniquecr.com</a></p>
           </address>
