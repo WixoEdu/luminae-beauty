@@ -10,6 +10,9 @@ export const revalidate = 60
 export const metadata: Metadata = {
   title: 'Blog | La Clinique · Escazú',
   description: 'Últimas noticias, artículos y experiencias de La Clinique: Skin Expertise, medicina estética regenerativa y el Método La Clinique.',
+  alternates: {
+    canonical: '/blog',
+  },
 }
 
 export default async function BlogPage() {

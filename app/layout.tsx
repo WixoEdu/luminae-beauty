@@ -19,19 +19,28 @@ const libreCaslon = Libre_Caslon_Text({
   display: 'swap',
 })
 
+const BASE_URL = 'https://www.lacliniquecr.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: 'La Clinique · Medicina Estética & Skin Expertise | Escazú',
   description: 'Clínica boutique en Escazú, Costa Rica. Skin Expertise by Charlotte Dibon, medicina estética regenerativa y acompañamiento personalizado.',
+  alternates: {
+    canonical: '/',
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   name: 'La Clinique',
-  image: 'https://www.lacliniquecr.com/logo/la-clinique-logo.png',
-  logo: 'https://www.lacliniquecr.com/logo/la-clinique-logo.png',
+  image: `${BASE_URL}/logo/la-clinique-logo.png`,
+  logo: `${BASE_URL}/logo/la-clinique-logo.png`,
   description: 'Clínica boutique en Escazú, Costa Rica. Skin Expertise by Charlotte Dibon, medicina estética regenerativa y acompañamiento personalizado.',
-  url: 'https://www.lacliniquecr.com',
+  url: BASE_URL,
   telephone: '+506-8970-0298',
   email: 'admin@lacliniquecr.com',
   address: {

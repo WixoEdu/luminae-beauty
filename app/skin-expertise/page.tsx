@@ -10,6 +10,9 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Skin Expertise | La Clinique · Escazú',
   description: 'Un espacio privado en Escazú dedicado al cuidado experto de la piel: tecnología de vanguardia, tratamientos signature y un equipo de expertos liderado por Charlotte Dibon.',
+  alternates: {
+    canonical: '/skin-expertise',
+  },
 }
 
 export default function SkinExpertisePage() {
