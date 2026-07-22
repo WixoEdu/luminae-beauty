@@ -82,7 +82,7 @@ function mapPost(wp: WPPost): Post {
 async function wpFetch<T>(path: string): Promise<T | null> {
   try {
     const res = await fetch(`${WORDPRESS_API_URL}/wp-json/wp/v2/${path}`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 3600 },
     })
     if (!res.ok) return null
     return (await res.json()) as T

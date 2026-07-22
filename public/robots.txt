@@ -1,0 +1,45 @@
+# robots.txt for lacliniquecr.com
+# La Clinique · Medicina Estética & Skin Expertise
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# OpenAI (ChatGPT Search)
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI (entrenamiento del modelo)
+User-agent: GPTBot
+Allow: /
+
+# OpenAI (navegación en tiempo real por usuarios)
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing (importante también para ChatGPT, ya que usa su índice)
+User-agent: Bingbot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap
+Sitemap: https://www.lacliniquecr.com/sitemap.xml
