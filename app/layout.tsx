@@ -29,7 +29,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION,
+    google: [process.env.GOOGLE_SITE_VERIFICATION, process.env.GOOGLE_SITE_VERIFICATION_WWW].filter(
+      (token): token is string => Boolean(token)
+    ),
   },
 }
 
