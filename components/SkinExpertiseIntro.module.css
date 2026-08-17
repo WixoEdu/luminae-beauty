@@ -84,11 +84,15 @@
 }
 
 /* ── Features ── */
+.featuresSection {
+  padding: 100px 0;
+  background: var(--bg);
+}
+
 .features {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 48px;
-  margin-top: 96px;
 }
 
 .featureIcon {
@@ -116,10 +120,22 @@
   color: #666;
 }
 
+/* ── Tablet ── */
+@media (max-width: 1100px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
 /* ── Mobile ── */
 @media (max-width: 900px) {
   .section {
     padding: 120px 0 72px;
+  }
+
+  .featuresSection {
+    padding: 72px 0;
   }
 
   .heading {
@@ -144,6 +160,5 @@
   .features {
     grid-template-columns: 1fr;
     gap: 40px;
-    margin-top: 64px;
   }
 }
