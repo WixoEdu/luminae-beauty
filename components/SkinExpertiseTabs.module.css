@@ -1,0 +1,144 @@
+.section {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.card {
+  background: var(--bg);
+  border-radius: 28px;
+  padding: 12px 12px 0;
+}
+
+/* ── Tab bar ── */
+.tabBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tabBtn {
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: none;
+  border-radius: 16px 16px 0 0;
+  padding: 20px 28px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tabBtn:hover {
+  color: var(--black);
+}
+
+.tabBtnActive,
+.tabBtnActive:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* ── Panel ── */
+.panel {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 480px);
+  gap: 0;
+  background: var(--white);
+  border-radius: 20px 20px 24px 24px;
+  overflow: hidden;
+}
+
+.panelText {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panelTitle {
+  font-size: clamp(24px, 2.4vw, 30px);
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.panelIntro {
+  font-size: 17px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: #555;
+  margin-bottom: 24px;
+  max-width: 520px;
+}
+
+.panelList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.panelList li {
+  position: relative;
+  padding: 14px 0 14px 22px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #555;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.panelList li:first-child {
+  border-top: none;
+}
+
+.panelList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 22px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.panelImage {
+  position: relative;
+  min-height: 420px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .card {
+    border-radius: 20px;
+    padding: 8px 8px 0;
+  }
+
+  .tabBar {
+    gap: 2px;
+  }
+
+  .tabBtn {
+    font-size: 12px;
+    padding: 14px 16px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .panel {
+    grid-template-columns: 1fr;
+  }
+
+  .panelText {
+    padding: 32px 24px;
+    order: 2;
+  }
+
+  .panelImage {
+    order: 1;
+    min-height: 260px;
+  }
+}

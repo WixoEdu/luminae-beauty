@@ -1,23 +1,31 @@
 import Image from 'next/image'
-import BookingButton from './BookingButton'
+import SkinExpertiseWhatIs from './SkinExpertiseWhatIs'
 import styles from './SkinExpertiseIntro.module.css'
 
 const features = [
   {
-    title: 'Tecnología de Vanguardia',
-    body: 'Nuestra clínica se enorgullece de ofrecer lo último en tratamientos de piel no invasivos.',
+    title: 'Escuchar',
+    body: 'Comprendemos tu historia, tus hábitos, tu rutina, los tratamientos anteriores, lo que te preocupa y cómo deseas sentirte en tu piel.',
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-        <circle cx="12" cy="12" r="2.3" />
-        <ellipse cx="12" cy="12" rx="10" ry="4.2" />
-        <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" />
-        <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" />
+        <path d="M4 10a8 8 0 1116 0v5a2 2 0 01-2 2h-1v-6h3M4 10v6h3v-6H4" />
+        <path d="M9 19a3 3 0 003 3" />
       </svg>
     ),
   },
   {
-    title: 'Tratamientos Signature',
-    body: 'Protocolos exclusivos, diseñados con criterio para cada tipo de piel y objetivo.',
+    title: 'Analizar',
+    body: 'Observamos la condición estética actual: barrera, hidratación, textura, sensibilidad, luminosidad, pigmentación visible y tolerancia. No sustituye un diagnóstico dermatológico. Cuando identificamos signos que requieren valoración médica, te orientamos.',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <circle cx="11" cy="11" r="7" />
+        <path d="M21 21l-4.35-4.35" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Diseñar',
+    body: 'Establecemos prioridades y creamos una estrategia. Puede incluir simplificación de rutina, protocolos de cabina, cuidado en casa, mantenimiento o coordinación con medicina estética.',
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
         <path d="M9 15l6-6" /><path d="M17.5 3.5a2.1 2.1 0 013 3L18 9l-3-3z" /><path d="M6 14l4 4-1.5 3L4 17.5z" />
@@ -25,12 +33,11 @@ const features = [
     ),
   },
   {
-    title: 'Equipo de Expertos',
-    body: 'Profesionales certificados que acompañan cada paso de tu proceso con cercanía.',
+    title: 'Acompañar',
+    body: 'La piel cambia. Revisamos su respuesta y adaptamos el plan conforme evoluciona.',
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-        <path d="M8 3h8v4a4 4 0 01-8 0V3z" /><path d="M5 3h3M16 3h3M5 3v2a3 3 0 003 3M19 3v2a3 3 0 01-3 3" />
-        <path d="M12 13v4M9 21h6M9.5 17h5l1 4h-7l1-4z" />
+        <path d="M12 21s-7-4.35-9.5-8.8C1 8.6 2.5 5 6 5c2 0 3.3 1.1 4 2 .7-.9 2-2 4-2 3.5 0 5 3.6 3.5 7.2C19 16.65 12 21 12 21z" />
       </svg>
     ),
   },
@@ -38,12 +45,12 @@ const features = [
 
 export default function SkinExpertiseIntro() {
   return (
+    <>
     <section className={styles.section}>
       <div className="container">
         <p className={styles.eyebrow}>La Clinique · Escazú</p>
         <h1 className={styles.heading}>
-          Un espacio privado donde relajarte<br />
-          y vivir el <em>cuidado experto de tu piel</em>
+          Tu piel no necesita más tratamientos al azar. Necesita <em>criterio</em>.
         </h1>
 
         <div className={styles.top}>
@@ -70,18 +77,24 @@ export default function SkinExpertiseIntro() {
             </div>
 
             <p className={styles.body}>
-              Ubicado en uno de los rincones más tranquilos de Escazú, este espacio boutique está dedicado a la belleza, la confianza y la calma. En La Clinique nuestra filosofía se centra en realzar y respetar tus rasgos únicos.
+              Skin Expertise es una experiencia personalizada para comprender el estado actual de tu piel, revisar su historia, tu rutina y los tratamientos anteriores, y diseñar una estrategia que pueda evolucionar contigo.
             </p>
             <p className={styles.body}>
-              Creemos que un buen cuidado de piel es ciencia y también criterio. Combinamos protocolos con respaldo clínico y técnicas estéticas pensadas para cada piel, con resultados naturales adaptados a tus objetivos. Ya sea que busques tratamiento médico, cuidado preventivo o armonización estética, nuestro enfoque prioriza la salud de tu piel a largo plazo.
+              No es un facial estándar ni una recomendación automática de productos. Es el punto de partida para dejar de probar sin dirección y comenzar a cuidar tu piel con un plan.
             </p>
-            <BookingButton className={styles.btn}>
-              <span>Reservar una cita</span>
+            <a href="https://wa.me/50689700298" target="_blank" rel="noopener noreferrer" className={styles.btn}>
+              <span>Reservar mi primera experiencia Skin Expertise</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 8h12M9 3l5 5-5 5" /></svg>
-            </BookingButton>
+            </a>
           </div>
         </div>
+      </div>
+    </section>
 
+    <SkinExpertiseWhatIs />
+
+    <section className={styles.featuresSection}>
+      <div className="container">
         <div className={styles.features}>
           {features.map((f) => (
             <div key={f.title} className={styles.feature}>
@@ -93,5 +106,6 @@ export default function SkinExpertiseIntro() {
         </div>
       </div>
     </section>
+    </>
   )
 }

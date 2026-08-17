@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 import SkinExpertiseIntro from '@/components/SkinExpertiseIntro'
+import SkinExpertiseTabs from '@/components/SkinExpertiseTabs'
 import SkinExpertisePhilosophy from '@/components/SkinExpertisePhilosophy'
 import SkinExpertiseDoctor from '@/components/SkinExpertiseDoctor'
 import SkinExpertiseGallery from '@/components/SkinExpertiseGallery'
 import SkinExpertiseConnect from '@/components/SkinExpertiseConnect'
+import SkinExpertiseFAQ from '@/components/SkinExpertiseFAQ'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
@@ -20,10 +22,12 @@ export default function SkinExpertisePage() {
     <>
       <Nav />
       <SkinExpertiseIntro />
+      <SkinExpertiseTabs />
       <SkinExpertisePhilosophy />
       <SkinExpertiseDoctor />
       <SkinExpertiseGallery />
       <SkinExpertiseConnect />
+      <SkinExpertiseFAQ />
       <Footer />
     </>
   )

@@ -38,7 +38,16 @@ export default function SkinExpertiseDoctor() {
           <p className={styles.role}>Skin Expert · Fundadora de La Clinique</p>
           <hr className={styles.divider} />
           <p className={styles.bio}>
-            Soy Charlotte Dibon, y creé La Clinique porque creo que la estética puede ser refinada y cercana a la vez. Las clientas vienen por los resultados, pero se quedan por la confianza, la claridad y el acompañamiento real. Mi objetivo es lograr resultados que se sientan como tu mejor versión: nunca exagerados, siempre con criterio.
+            Charlotte Dibon es francesa, vive en Costa Rica desde hace ocho años y es Skin Expert en La Clinique, Especialista en estética avanzada · CIDESCO Internacional y creadora de la experiencia Skin Expertise.
+          </p>
+          <p className={styles.bio}>
+            Antes de desarrollar Skin Expertise en La Clinique, trabajó durante varios años como international trainer para una marca francesa profesional de skincare y spa en Estados Unidos, formando y acompañando a profesionales en protocolos, conocimiento de producto y experiencia del cliente.
+          </p>
+          <p className={styles.bio}>
+            Su enfoque reúne una visión europea del cuidado de la piel, estándares internacionales de formación, experiencia profesional en Estados Unidos, conocimiento del clima y del sector estético costarricense, y atención en inglés, francés y español.
+          </p>
+          <p className={styles.bio}>
+            Más que recomendar tratamientos, Charlotte busca comprender la historia completa de cada piel y convertirla en una estrategia clara, progresiva y realista.
           </p>
           <div className={styles.social}>
             <a href="#" aria-label="Instagram" className={styles.socialIcon}><InstagramIcon /></a>
