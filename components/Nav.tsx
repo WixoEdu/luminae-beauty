@@ -10,7 +10,7 @@ import styles from './Nav.module.css'
 export const navLinks = [
   { label: 'Inicio',           href: '/' },
   { label: 'Skin Expertise',    href: '/skin-expertise' },
-  { label: 'Medicina Estética', href: '#skin-expertise' },
+  { label: 'Medicina Estética', href: '#medicina-estetica' },
   { label: 'El Método',        href: '#metodo' },
   { label: 'Blog',             href: '/blog' },
   { label: 'Contacto',         href: '#contacto' },

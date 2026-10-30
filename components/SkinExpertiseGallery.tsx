@@ -100,7 +100,7 @@ export default function SkinExpertiseGallery() {
       <div className={styles.headerText}>
         <p className={styles.eyebrow}>La Clinique · Escazú</p>
         <h3 className={styles.heading}>
-          Un espacio seguro para <em>disfrutar y relajarte</em>
+          Un espacio preparado <em>para ti</em>
         </h3>
       </div>
 

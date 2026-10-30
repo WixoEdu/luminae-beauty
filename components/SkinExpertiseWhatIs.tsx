@@ -1,5 +1,13 @@
 import Image from 'next/image'
+import PhotoNote from './PhotoNote'
 import styles from './SkinExpertiseWhatIs.module.css'
+
+const steps = [
+  { title: 'Primero observo y escucho.', body: 'Tu historia, tu rutina y la forma en que tu piel se encuentra hoy importan.' },
+  { title: 'Después selecciono.', body: 'La limpieza, los activos, las técnicas y su orden responden a prioridades identificadas en la valoración.' },
+  { title: 'Durante la sesión ajusto.', body: 'El cuidado manual y los tiempos se adaptan a la respuesta y tolerancia de tu piel.' },
+  { title: 'Al terminar, te oriento.', body: 'Sales con recomendaciones para casa y los siguientes pasos de una estrategia que puede evolucionar contigo.' },
+]
 
 export default function SkinExpertiseWhatIs() {
   return (
@@ -9,50 +17,50 @@ export default function SkinExpertiseWhatIs() {
           <div className={styles.imageCol}>
             <Image
               src="/skin_expertise_intro.jpg"
-              alt="Análisis y cuidado personalizado de la piel"
+              alt="Piel luminosa y gota de sérum"
               fill
               sizes="(max-width:900px) 100vw, 45vw"
               style={{ objectFit: 'cover' }}
             />
+            <PhotoNote>primer plano de las manos de Charlotte trabajando</PhotoNote>
           </div>
 
           <div className={styles.textCol}>
-            <h2 className={styles.title}>¿Qué es Skin Expertise?</h2>
+            <p className={styles.eyebrow}>L&apos;artisanat du soin</p>
+            <h2 className={styles.title}>Una artesanía hecha a medida para tu piel.</h2>
             <hr className={styles.divider} />
             <p className={styles.text}>
-              Skin Expertise es una experiencia de análisis estético y cuidado personalizado creada por Charlotte Dibon en La Clinique. Integra la historia de la piel, la rutina, los hábitos, los tratamientos previos, las expectativas y la condición visible actual para diseñar un plan de calidad de piel con protocolos profesionales, skincare y acompañamiento.
+              En Francia, el cuidado profesional de la piel es un oficio. Se aprende estudiando, observando y trabajando con las manos durante años. Ese savoir-faire está en cada decisión: qué necesita tu piel hoy, qué conviene posponer y cómo combinar técnicas y activos con intención.
             </p>
             <p className={styles.text}>
-              Cuando una preocupación requiere diagnóstico, prescripción o un procedimiento médico, se orienta o coordina con el profesional correspondiente.
+              No sigo una fórmula fija: construyo cada sesión a partir de ti.
             </p>
           </div>
         </div>
 
         <div className={`${styles.row} ${styles.rowReverse}`}>
           <div className={styles.textCol}>
+            <p className={styles.eyebrow}>Sur mesure, en la práctica</p>
             <h3 className={styles.quote}>
-              Quizá tu piel no necesita algo más. Necesita que alguien conecte todas las piezas.
+              Qué significa &ldquo;sur mesure&rdquo; en una sesión.
             </h3>
-            <p className={styles.text}>
-              Muchas pacientes llegan utilizando buenos productos y realizándose buenos tratamientos, pero sin una estrategia común.
-            </p>
-            <ul className={styles.list}>
-              <li>La piel está sensibilizada por demasiados activos.</li>
-              <li>Se siente deshidratada aunque utiliza varias cremas.</li>
-              <li>Trabaja manchas sin controlar primero la inflamación y la barrera.</li>
-              <li>Recibe procedimientos en distintos lugares sin coordinación.</li>
-              <li>Está cambiando por clima, estrés, edad o transición hormonal.</li>
-              <li>Acumula tratamientos sin saber cuál debería ser la prioridad.</li>
-            </ul>
-            <p className={styles.text}>
-              La paciente no debe sentirse culpable. La industria la acostumbró a elegir productos y procedimientos antes de entender qué necesita su piel.
+            <ol className={styles.steps}>
+              {steps.map((s, i) => (
+                <li key={s.title}>
+                  <span className={styles.stepNum}>0{i + 1}</span>
+                  <p className={styles.stepText}><strong>{s.title}</strong> {s.body}</p>
+                </li>
+              ))}
+            </ol>
+            <p className={styles.note}>
+              No todos los pasos ni todos los activos aplican a todas las personas: la indicación depende de la evaluación y del alcance profesional.
             </p>
           </div>
 
           <div className={`${styles.imageCol} ${styles.imageColOffset}`}>
             <Image
               src="/approach.jpg"
-              alt="Cuidado de piel personalizado en La Clinique"
+              alt="Rostro iluminado por luz natural"
               fill
               sizes="(max-width:900px) 100vw, 45vw"
               style={{ objectFit: 'cover' }}

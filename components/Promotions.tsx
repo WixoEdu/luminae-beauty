@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useRef, useEffect } from 'react'
+import { useBooking } from '@/context/BookingContext'
 import styles from './Promotions.module.css'
 
 const promos = [
@@ -20,6 +21,7 @@ const GiftIcon = () => (
 )
 
 export default function Promotions() {
+  const { open: openBooking } = useBooking()
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
   // Animate the glass box in when each card enters the viewport
@@ -76,7 +78,7 @@ export default function Promotions() {
               <div className={styles.giftIcon}><GiftIcon /></div>
               <p className={styles.pct}>{p.pct} <em>{p.label}</em></p>
               <p className={styles.desc}>{p.desc}</p>
-              <a href="#" className={styles.btn}>Reservar hoy &rarr;</a>
+              <a href="#" className={styles.btn} onClick={(e) => { e.preventDefault(); openBooking() }}>Reservar hoy &rarr;</a>
             </div>
           </div>
         ))}

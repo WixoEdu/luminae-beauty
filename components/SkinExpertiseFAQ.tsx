@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: '¿Qué incluye la primera visita?',
-    a: 'Incluye conversación detallada, revisión de productos y tratamientos anteriores, lectura estética del estado actual, protocolo personalizado, recomendaciones y un plan inicial. La página debe indicar la duración y el precio vigentes.',
+    a: 'Incluye conversación detallada, revisión de productos y tratamientos anteriores, lectura estética del estado actual, protocolo personalizado, recomendaciones y un plan inicial. La experiencia individual dura 1h30.',
   },
   {
     q: '¿Debo llevar mis productos?',

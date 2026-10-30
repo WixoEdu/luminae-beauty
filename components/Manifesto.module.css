@@ -1,0 +1,26 @@
+.section {
+  padding: 140px 0;
+  background: var(--white);
+  text-align: center;
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4.2vw, 60px);
+  line-height: 1.2;
+  color: var(--black);
+  margin-bottom: 32px;
+}
+
+.note {
+  font-size: 18px;
+  font-weight: 300;
+  color: #666;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 90px 0; }
+}

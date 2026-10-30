@@ -7,13 +7,6 @@ function InstagramIcon() {
   )
 }
 
-const stats = [
-  { value: '10+', label: 'Años de', sub: 'experiencia' },
-  { value: '98%', label: 'Clientes', sub: 'satisfechos' },
-  { value: '4.9', label: 'Puntuación', sub: 'media' },
-  { value: '5K',  label: 'Transfor-', sub: 'maciones' },
-]
-
 export default function SkinExpertiseConnect() {
   return (
     <section className={styles.section}>
@@ -38,14 +31,6 @@ export default function SkinExpertiseConnect() {
         </div>
       </div>
 
-      <div className={`container ${styles.statsRow}`}>
-        {stats.map((s) => (
-          <div key={s.sub} className={styles.stat}>
-            <span className={styles.statValue}>{s.value}</span>
-            <span className={styles.statLabel}>{s.label}<br /><em>{s.sub}</em></span>
-          </div>
-        ))}
-      </div>
     </section>
   )
 }

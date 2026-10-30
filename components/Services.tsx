@@ -5,8 +5,6 @@ import { useRef } from 'react'
 import styles from './Services.module.css'
 
 const services = [
-  { title: 'Skin Expertise by Charlotte', treatments: ['Análisis personalizado de piel', 'Protocolo facial avanzado', 'Sesión de 1h30', 'Seguimiento posterior'],              img: '/service_01.jpg' },
-  { title: 'Membresía Première',          treatments: ['Rito mensual Skin Expertise', 'Acceso prioritario a agenda', 'WhatsApp directo con Charlotte', 'Beneficios exclusivos'], img: '/service_02.jpg' },
   { title: 'Toxina Botulínica',           treatments: ['Suavizar líneas de expresión', 'Prevención progresiva', 'Resultado fresco y natural', 'Criterio médico'],              img: '/service_03.jpg' },
   { title: 'Radiesse · Bioestimulación',  treatments: ['Mejora de firmeza facial', 'Calidad y soporte de piel', 'Regeneración de tejidos', 'Resultados progresivos'],          img: '/service_04.jpg' },
   { title: 'Fillers · Ácido Hialurónico', treatments: ['Armonización facial', 'Restaurar y equilibrar', 'Indicado por valoración médica', 'Resultados naturales'],            img: '/service_05.jpg' },
@@ -23,13 +21,17 @@ export default function Services() {
   }
 
   return (
-    <section id="servicios" className={styles.services}>
+    <section id="medicina-estetica" className={styles.services}>
       <div className={`container ${styles.header}`}>
-        <h3 className={styles.heading}>
-          Skin Expertise<br />
-          <em>&amp; Medicina</em><br />
-          Estética Regenerativa
-        </h3>
+        <div>
+          <h3 className={styles.heading}>
+            Medicina Estética<br />
+            <em>Regenerativa</em>
+          </h3>
+          <p className={styles.lead}>
+            Procedimientos realizados por profesionales médicos según valoración e indicación correspondiente. Una disciplina complementaria a Skin Expertise, con su propio espacio.
+          </p>
+        </div>
         <div className={styles.arrows}>
           <button onClick={() => scroll('prev')} aria-label="Anterior" className={styles.arrow}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M11 3L5 9l6 6" /></svg>

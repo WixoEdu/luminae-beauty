@@ -19,6 +19,15 @@
   line-height: 1.15;
 }
 
+.lead {
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: #666;
+  max-width: 560px;
+  margin-top: 20px;
+}
+
 .arrows {
   display: flex;
   gap: 8px;

@@ -4,10 +4,13 @@
 }
 
 .inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.instaCol {
+  width: min(560px, 100%);
 }
 
 /* ── Instagram col ── */
@@ -55,65 +58,7 @@
   overflow: hidden;
 }
 
-/* ── Counters col ── */
-.countersCol {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  background: rgba(0,0,0,0.07);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.counter {
-  background: var(--white);
-  padding: 48px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.cLabel {
-  font-size: 16px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 500;
-}
-
-.cValue {
-  font-family: var(--font-heading);
-  font-size: clamp(36px, 3.5vw, 56px);
-  font-weight: 400;
-  color: var(--black);
-  line-height: 1;
-}
-
-.cSuffix {
-  font-size: 0.5em;
-  vertical-align: super;
-  color: var(--alternate);
-}
-
-.cSub em {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-size: 16px;
-  color: var(--alternate);
-}
-
 /* ── Mobile ── */
 @media (max-width: 900px) {
-  .inner {
-    grid-template-columns: 1fr;
-    gap: 56px;
-  }
-
-  .countersCol {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .counter { padding: 32px 24px; }
-
   .stats { padding: 80px 0; }
 }

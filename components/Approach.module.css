@@ -66,6 +66,13 @@
   font-weight: 300;
 }
 
+.closing {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 1.8vw, 26px);
+  color: var(--black);
+  margin-bottom: 24px;
+}
+
 .btn {
   display: inline-block;
   text-decoration: none;

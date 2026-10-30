@@ -23,8 +23,8 @@ const libreCaslon = Libre_Caslon_Text({
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   robots: IS_PRODUCTION ? undefined : { index: false, follow: false },
-  title: 'La Clinique · Medicina Estética & Skin Expertise | Escazú',
-  description: 'Clínica boutique en Escazú, Costa Rica. Skin Expertise by Charlotte Dibon, medicina estética regenerativa y acompañamiento personalizado.',
+  title: 'La Clinique | Savoir-faire francés y cuidado de piel en Escazú',
+  description: 'Vive en Escazú una experiencia de cuidado facial inspirada en la estética francesa. Skin Expertise by Charlotte: análisis personalizado, modelage y acompañamiento.',
   alternates: {
     canonical: '/',
   },
