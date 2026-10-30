@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import PhotoNote from './PhotoNote'
+import PhotoSlot from './PhotoSlot'
 import BookingButton from './BookingButton'
 import SkinExpertiseWhatIs from './SkinExpertiseWhatIs'
 import styles from './SkinExpertiseIntro.module.css'
@@ -16,15 +16,7 @@ export default function SkinExpertiseIntro() {
 
         <div className={styles.top}>
           <div className={styles.imgMain}>
-            <Image
-              src="/about_main.jpg"
-              alt="Rostro con piel luminosa, mano junto a la mejilla"
-              fill
-              priority
-              sizes="(max-width:900px) 100vw, 55vw"
-              style={{ objectFit: 'cover' }}
-            />
-            <PhotoNote>manos de Charlotte en un modelage o Charlotte con una paciente en cabina</PhotoNote>
+            <PhotoSlot label="Manos de Charlotte en un modelage, o Charlotte con una paciente en cabina" />
           </div>
 
           <div className={styles.rightCol}>

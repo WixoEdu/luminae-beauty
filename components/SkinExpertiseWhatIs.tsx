@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import PhotoNote from './PhotoNote'
+import PhotoSlot from './PhotoSlot'
 import SurMesureAccordion from './SurMesureAccordion'
 import styles from './SkinExpertiseWhatIs.module.css'
 
@@ -9,14 +9,7 @@ export default function SkinExpertiseWhatIs() {
       <div className="container">
         <div className={styles.row}>
           <div className={styles.imageCol}>
-            <Image
-              src="/skin_expertise_intro.jpg"
-              alt="Piel luminosa y gota de sérum"
-              fill
-              sizes="(max-width:900px) 100vw, 45vw"
-              style={{ objectFit: 'cover' }}
-            />
-            <PhotoNote>primer plano de las manos de Charlotte trabajando</PhotoNote>
+            <PhotoSlot label="Primer plano de las manos de Charlotte trabajando" />
           </div>
 
           <div className={styles.textCol}>
