@@ -1,0 +1,31 @@
+.band {
+  background: #1e1a17;
+  padding: 120px 0;
+  text-align: center;
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3.2vw, 46px);
+  line-height: 1.35;
+  color: var(--white);
+  max-width: 880px;
+  margin: 0 auto 56px;
+}
+
+.quote em {
+  color: #d6c3a1;
+}
+
+.logo {
+  width: 220px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .band { padding: 80px 0; }
+  .quote { margin-bottom: 40px; }
+  .logo { width: 180px; }
+}

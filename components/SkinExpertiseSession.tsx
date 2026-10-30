@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import PhotoNote from './PhotoNote'
+import BrandBand from './BrandBand'
 import styles from './SkinExpertiseSession.module.css'
 
 const moments = [
@@ -42,6 +43,7 @@ const moments = [
 
 export default function SkinExpertiseSession() {
   return (
+    <>
     <section id="sesion" className={styles.section}>
       <div className="container">
         <p className={styles.eyebrow}>La sesión, explicada como experiencia</p>
@@ -60,13 +62,12 @@ export default function SkinExpertiseSession() {
           ))}
         </div>
 
-        <div className={styles.quoteBlock}>
-          <p className={styles.quote}>Mis manos conocen los gestos. <em>Tu piel decide cuáles necesita.</em></p>
-          <p className={styles.text}>
-            Ninguna sesión se repite de forma automática. Algunas pieles necesitan calmarse; otras, recuperar confort, luminosidad o trabajar determinadas prioridades con técnicas apropiadas. Cada elección comienza por comprender qué es importante hoy.
-          </p>
-        </div>
       </div>
     </section>
+
+    <BrandBand>
+      Mis manos conocen los gestos. <em>Tu piel decide cuáles necesita.</em>
+    </BrandBand>
+    </>
   )
 }

@@ -3,8 +3,6 @@ import Nav from '@/components/Nav'
 import SkinExpertiseIntro from '@/components/SkinExpertiseIntro'
 import SkinExpertiseSession from '@/components/SkinExpertiseSession'
 import SkinExpertiseContinuity from '@/components/SkinExpertiseContinuity'
-import SkinExpertiseTabs from '@/components/SkinExpertiseTabs'
-import SkinExpertisePhilosophy from '@/components/SkinExpertisePhilosophy'
 import SkinExpertiseDoctor from '@/components/SkinExpertiseDoctor'
 import SkinExpertiseGallery from '@/components/SkinExpertiseGallery'
 import SkinExpertiseConnect from '@/components/SkinExpertiseConnect'
@@ -25,9 +23,7 @@ export default function SkinExpertisePage() {
       <Nav />
       <SkinExpertiseIntro />
       <SkinExpertiseSession />
-      <SkinExpertiseTabs />
       <SkinExpertiseContinuity />
-      <SkinExpertisePhilosophy />
       <SkinExpertiseDoctor />
       <SkinExpertiseGallery />
       <SkinExpertiseConnect />

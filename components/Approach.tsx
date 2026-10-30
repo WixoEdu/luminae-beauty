@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import ShortsEmbed from './ShortsEmbed'
 import styles from './Approach.module.css'
 
 const steps = [
@@ -35,8 +35,8 @@ export default function Approach() {
         </div>
 
         <div className={styles.imageCol}>
-          <div className={styles.imgCircle}>
-            <Image src="/approach.jpg" alt="Nuestro enfoque" fill sizes="(max-width:900px) 100vw, 45vw" style={{ objectFit: 'cover' }} />
+          <div className={styles.video}>
+            <ShortsEmbed id="H3lfZ944ZOo" title="El método La Clinique" />
           </div>
         </div>
       </div>

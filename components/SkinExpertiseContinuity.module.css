@@ -3,6 +3,15 @@
   background: var(--white);
 }
 
+/* ── Intro + portrait placeholder ── */
+.top {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
 .eyebrow {
   font-size: 15px;
   letter-spacing: 3px;
@@ -23,10 +32,18 @@
   line-height: 1.85;
   font-weight: 300;
   color: #555;
-  max-width: 720px;
-  margin-bottom: 64px;
+  max-width: 640px;
 }
 
+.portrait {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 4 / 5;
+  justify-self: center;
+}
+
+/* ── Cards that turn dark on hover ── */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -36,39 +53,65 @@
 .card {
   background: var(--cream);
   border-radius: 24px;
-  padding: 48px 44px;
+  padding: 52px 48px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   scroll-margin-top: 100px;
+  transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  background: #1e1a17;
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(30, 26, 23, 0.22);
 }
 
 .cardEyebrow {
   font-size: 14px;
   letter-spacing: 3px;
   text-transform: uppercase;
+  font-weight: 500;
   color: var(--accent);
   margin-bottom: 16px;
+  transition: color 0.4s ease;
 }
 
 .cardTitle {
-  font-size: clamp(22px, 2vw, 28px);
+  font-size: clamp(24px, 2.2vw, 32px);
   line-height: 1.25;
   color: var(--black);
   margin-bottom: 20px;
+  transition: color 0.4s ease;
 }
 
 .cardText {
-  font-size: 17px;
-  line-height: 1.8;
-  font-weight: 300;
-  color: #555;
-  margin-bottom: 32px;
+  font-size: 18px;
+  line-height: 1.75;
+  font-weight: 400;
+  color: #4a433e;
+  margin-bottom: 36px;
   flex: 1;
+  transition: color 0.4s ease;
 }
 
-.btnDark,
-.btnLight {
+.card:hover .cardEyebrow,
+.card:focus-within .cardEyebrow {
+  color: #d6c3a1;
+}
+
+.card:hover .cardTitle,
+.card:focus-within .cardTitle {
+  color: var(--white);
+}
+
+.card:hover .cardText,
+.card:focus-within .cardText {
+  color: #ece6dd;
+}
+
+.btn {
   display: inline-block;
   text-decoration: none;
   border-radius: 100px;
@@ -79,31 +122,40 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 0.2s, background 0.2s, color 0.2s;
-}
-
-.btnDark {
   background: var(--black);
   color: var(--white);
   border: 1px solid var(--black);
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-.btnDark:hover { opacity: 0.8; }
+.card:hover .btn,
+.card:focus-within .btn {
+  background: var(--white);
+  color: #1e1a17;
+  border-color: var(--white);
+}
 
-.btnLight {
-  background: transparent;
+/* ── Closing manifesto ── */
+.manifesto {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.4;
+  text-align: center;
   color: var(--black);
-  border: 1px solid var(--black);
+  max-width: 760px;
+  margin: 88px auto 0;
 }
 
-.btnLight:hover {
-  background: var(--black);
-  color: var(--white);
+@media (prefers-reduced-motion: reduce) {
+  .card, .cardEyebrow, .cardTitle, .cardText, .btn { transition: none; }
+  .card:hover, .card:focus-within { transform: none; }
 }
 
 @media (max-width: 900px) {
   .section { padding: 80px 0; }
+  .top { grid-template-columns: 1fr; gap: 40px; margin-bottom: 48px; }
+  .portrait { max-width: 320px; }
   .grid { grid-template-columns: 1fr; }
   .card { padding: 36px 28px; }
-  .lead { margin-bottom: 40px; }
+  .manifesto { margin-top: 56px; }
 }

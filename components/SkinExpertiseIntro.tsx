@@ -1,29 +1,8 @@
 import Image from 'next/image'
-import { gestos } from '@/lib/content'
 import PhotoNote from './PhotoNote'
 import BookingButton from './BookingButton'
 import SkinExpertiseWhatIs from './SkinExpertiseWhatIs'
 import styles from './SkinExpertiseIntro.module.css'
-
-const icons = [
-  // Le geste
-  <svg key="geste" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-    <path d="M8 12V5.5a1.5 1.5 0 013 0V11m0-5.5a1.5 1.5 0 013 0V11m0-4a1.5 1.5 0 013 0v7a6 6 0 01-6 6h-1a5 5 0 01-4-2l-3-4a1.5 1.5 0 012.2-2L8 15" />
-  </svg>,
-  // Sur mesure
-  <svg key="mesure" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-    <path d="M9 15l6-6" /><path d="M17.5 3.5a2.1 2.1 0 013 3L18 9l-3-3z" /><path d="M6 14l4 4-1.5 3L4 17.5z" />
-  </svg>,
-  // Le modelage
-  <svg key="modelage" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-    <path d="M12 21s-7-4.35-9.5-8.8C1 8.6 2.5 5 6 5c2 0 3.3 1.1 4 2 .7-.9 2-2 4-2 3.5 0 5 3.6 3.5 7.2C19 16.65 12 21 12 21z" />
-  </svg>,
-  // Le conseil
-  <svg key="conseil" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-    <path d="M4 10a8 8 0 1116 0v5a2 2 0 01-2 2h-1v-6h3M4 10v6h3v-6H4" />
-    <path d="M9 19a3 3 0 003 3" />
-  </svg>,
-]
 
 export default function SkinExpertiseIntro() {
   return (
@@ -76,20 +55,6 @@ export default function SkinExpertiseIntro() {
 
     <SkinExpertiseWhatIs />
 
-    <section className={styles.featuresSection}>
-      <div className="container">
-        <div className={styles.features}>
-          {gestos.map((g, i) => (
-            <div key={g.code} className={styles.feature}>
-              <div className={styles.featureIcon}>{icons[i]}</div>
-              <p className={styles.featureCode}>{g.code}</p>
-              <h5 className={styles.featureTitle}>{g.title}</h5>
-              <p className={styles.featureBody}>{g.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
     </>
   )
 }

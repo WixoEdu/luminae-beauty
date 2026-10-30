@@ -1,13 +1,7 @@
 import Image from 'next/image'
 import PhotoNote from './PhotoNote'
+import SurMesureAccordion from './SurMesureAccordion'
 import styles from './SkinExpertiseWhatIs.module.css'
-
-const steps = [
-  { title: 'Primero observo y escucho.', body: 'Tu historia, tu rutina y la forma en que tu piel se encuentra hoy importan.' },
-  { title: 'Después selecciono.', body: 'La limpieza, los activos, las técnicas y su orden responden a prioridades identificadas en la valoración.' },
-  { title: 'Durante la sesión ajusto.', body: 'El cuidado manual y los tiempos se adaptan a la respuesta y tolerancia de tu piel.' },
-  { title: 'Al terminar, te oriento.', body: 'Sales con recomendaciones para casa y los siguientes pasos de una estrategia que puede evolucionar contigo.' },
-]
 
 export default function SkinExpertiseWhatIs() {
   return (
@@ -44,14 +38,7 @@ export default function SkinExpertiseWhatIs() {
             <h3 className={styles.quote}>
               Qué significa &ldquo;sur mesure&rdquo; en una sesión.
             </h3>
-            <ol className={styles.steps}>
-              {steps.map((s, i) => (
-                <li key={s.title}>
-                  <span className={styles.stepNum}>0{i + 1}</span>
-                  <p className={styles.stepText}><strong>{s.title}</strong> {s.body}</p>
-                </li>
-              ))}
-            </ol>
+            <SurMesureAccordion />
             <p className={styles.note}>
               No todos los pasos ni todos los activos aplican a todas las personas: la indicación depende de la evaluación y del alcance profesional.
             </p>

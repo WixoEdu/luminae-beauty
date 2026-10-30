@@ -74,42 +74,11 @@
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 48px;
+  margin-top: 36px;
   transition: opacity 0.2s;
 }
 
 .btn:hover { opacity: 0.8; }
-
-/* ── Quick links ── */
-.quickLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.quickLink {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-decoration: none;
-  color: var(--black);
-  font-size: 16px;
-  font-weight: 500;
-  font-family: var(--font-body);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 18px 0;
-  border-top: 1px solid rgba(0,0,0,0.10);
-  transition: color 0.2s;
-}
-
-.quickLink:last-child {
-  border-bottom: 1px solid rgba(0,0,0,0.10);
-}
-
-.quickLink:hover {
-  color: var(--accent);
-}
 
 /* ── Mobile ── */
 @media (max-width: 900px) {

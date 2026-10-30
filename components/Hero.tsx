@@ -1,21 +1,12 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import PhotoNote from './PhotoNote'
+import PhotoSlot from './PhotoSlot'
 import styles from './Hero.module.css'
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.bg}>
-        <Image
-          src="/before.png"
-          alt="Rostro sereno con la piel natural, ojos cerrados"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: 'center 10%' }}
-        />
-        <PhotoNote top>manos de Charlotte realizando un modelage, o Charlotte recibiendo a una paciente (luz natural, espacio libre a la izquierda para el texto)</PhotoNote>
+        <PhotoSlot variant="hero" label="Manos de Charlotte realizando un modelage, o Charlotte recibiendo a una paciente (luz natural, espacio libre a la izquierda para el texto)" />
       </div>
 
       <div className={styles.overlay} />

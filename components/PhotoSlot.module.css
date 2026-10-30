@@ -1,0 +1,48 @@
+.slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+  color: var(--accent);
+  background: linear-gradient(145deg, #ebe5dc 0%, #d8cdbf 100%);
+}
+
+.title {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.label {
+  max-width: 320px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #6b6159;
+}
+
+/* Hero: the placeholder only fills the right side so the copy stays on a clean background */
+.hero {
+  left: 45%;
+  border-radius: 0;
+}
+
+/* Cut-out portrait (photo without background) */
+.cutout {
+  background: transparent;
+  border: 1.5px dashed rgba(117, 105, 96, 0.55);
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    left: 0;
+    bottom: 55%;
+  }
+}
