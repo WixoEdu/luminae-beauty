@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Jost, Libre_Caslon_Text } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { BookingProvider } from '@/context/BookingContext'
+import { BASE_URL, IS_PRODUCTION } from '@/lib/site'
 import './globals.css'
 
 const jost = Jost({
@@ -19,10 +20,9 @@ const libreCaslon = Libre_Caslon_Text({
   display: 'swap',
 })
 
-const BASE_URL = 'https://www.lacliniquecr.com'
-
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  robots: IS_PRODUCTION ? undefined : { index: false, follow: false },
   title: 'La Clinique · Medicina Estética & Skin Expertise | Escazú',
   description: 'Clínica boutique en Escazú, Costa Rica. Skin Expertise by Charlotte Dibon, medicina estética regenerativa y acompañamiento personalizado.',
   alternates: {

@@ -1,11 +1,12 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/posts'
-
-const BASE_URL = 'https://www.lacliniquecr.com'
+import { BASE_URL, IS_PRODUCTION } from '@/lib/site'
 
 export const revalidate = 3600
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  if (!IS_PRODUCTION) return []
+
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
