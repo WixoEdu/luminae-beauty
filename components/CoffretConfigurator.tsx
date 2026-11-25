@@ -15,13 +15,6 @@ const ITEMS = [
     desc: 'Una experiencia Skin Expertise de 90 minutos: análisis, protocolo y acompañamiento diseñado por Charlotte Dibon.',
   },
   {
-    id: 'bono',
-    price: 40,
-    label: 'Bono en potenciadores y medicina estética',
-    emotion: 'Para profundizar el ritual.',
-    desc: 'Un crédito adicional para potenciadores o medicina estética, aplicable en una próxima visita.',
-  },
-  {
     id: 'fauchon',
     price: 20,
     label: 'Caja de chocolates Fauchon París',
@@ -37,6 +30,14 @@ const ITEMS = [
   },
 ]
 
+// Beneficio para quien regala: se activa al elegir la tarjeta Skin Expertise y no suma al total.
+const BONUS = {
+  value: 40,
+  title: 'Bono de $40 para ti',
+  emotion: 'Un detalle para quien regala.',
+  desc: 'Por regalar la tarjeta Skin Expertise, recibes un crédito de $40 en potenciadores o medicina estética, aplicable en tu próxima visita.',
+}
+
 export default function CoffretConfigurator() {
   const [selected, setSelected] = useState<string[]>([])
 
@@ -44,12 +45,13 @@ export default function CoffretConfigurator() {
     setSelected((prev) => (prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]))
 
   const chosen = ITEMS.filter((i) => selected.includes(i.id))
+  const hasCard = selected.includes('skin-expertise')
   const total = chosen.reduce((sum, i) => sum + i.price, 0)
 
   const sendWhatsApp = () => {
     if (chosen.length === 0) return
     const lines = chosen.map((i) => `— ${i.label} ($${i.price})`).join('\n')
-    const message = `Hola 👋 Me gustaría reservar un coffret de La Clinique\n\nMi selección:\n${lines}\n\nTotal: $${total}\n\n¿Me ayudan a coordinar el envío?`
+    const message = `Hola 👋 Me gustaría reservar un coffret de La Clinique\n\nMi selección:\n${lines}\n\nTotal: $${total}${hasCard ? `\n\nBeneficio para quien regala: bono de $${BONUS.value} en potenciadores o medicina estética (no suma al total).` : ''}\n\n¿Me ayudan a coordinar el envío?`
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer')
   }
 
@@ -107,6 +109,20 @@ export default function CoffretConfigurator() {
             })}
           </div>
 
+          <div className={`${styles.bonus} ${hasCard ? styles.bonusOn : ''}`}>
+            <span className={styles.bonusIcon} aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="8" width="18" height="13" rx="2" /><path d="M12 8v13M3 12h18M12 8c-2.5 0-4-1-4-2.5S9.5 3 12 5c2.5-2 4-.5 4 .5S14.5 8 12 8z" /></svg>
+            </span>
+            <span className={styles.itemBody}>
+              <span className={styles.itemHead}>
+                <span className={styles.itemTitle}>{BONUS.title}</span>
+                <span className={styles.bonusTag}>{hasCard ? 'Incluido' : 'Con la tarjeta'}</span>
+              </span>
+              <em className={styles.emotion}>{BONUS.emotion}</em>
+              <span className={styles.desc}>{BONUS.desc}</span>
+            </span>
+          </div>
+
           <div className={styles.summary} aria-live="polite">
             <p className={styles.summaryTitle}>Tu coffret</p>
             {chosen.length === 0 ? (
@@ -119,6 +135,12 @@ export default function CoffretConfigurator() {
                     <span>${i.price}</span>
                   </div>
                 ))}
+                {hasCard && (
+                  <div className={styles.perk}>
+                    <span>+ Para ti: bono de ${BONUS.value}</span>
+                    <span>Sin costo</span>
+                  </div>
+                )}
                 <div className={styles.total}>
                   <span>Total</span>
                   <span>${total}</span>
