@@ -9,21 +9,21 @@ const WHATSAPP_NUMBER = '50689700298'
 const ITEMS = [
   {
     id: 'skin-expertise',
-    price: 249,
+    price: 259,
     label: 'Tarjeta de regalo Skin Expertise',
     emotion: 'Para cuidar la piel.',
     desc: 'Una experiencia Skin Expertise de 90 minutos: análisis, protocolo y acompañamiento diseñado por Charlotte Dibon.',
   },
   {
     id: 'fauchon',
-    price: 20,
+    price: 25,
     label: 'Caja de chocolates Fauchon París',
     emotion: 'Para cuidar el paladar.',
     desc: 'Selección de chocolates artesanales traídos directamente de la casa parisina Fauchon.',
   },
   {
     id: 'nota',
-    price: 20,
+    price: 0,
     label: 'Nota personalizada escrita a mano',
     emotion: 'Para cuidar el corazón.',
     desc: 'Nota manuscrita con el mensaje que elijas, sellada con nuestro lacre dorado.',
@@ -38,8 +38,10 @@ const BONUS = {
   desc: 'Por regalar la tarjeta Skin Expertise, recibes un crédito de $40 en potenciadores o medicina estética, aplicable en tu próxima visita.',
 }
 
+const priceLabel = (price: number) => (price === 0 ? 'Gratis' : `$${price}`)
+
 export default function CoffretConfigurator() {
-  const [selected, setSelected] = useState<string[]>([])
+  const [selected, setSelected] = useState<string[]>(['skin-expertise'])
 
   const toggle = (id: string) =>
     setSelected((prev) => (prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]))
@@ -50,7 +52,7 @@ export default function CoffretConfigurator() {
 
   const sendWhatsApp = () => {
     if (chosen.length === 0) return
-    const lines = chosen.map((i) => `— ${i.label} ($${i.price})`).join('\n')
+    const lines = chosen.map((i) => `— ${i.label} (${priceLabel(i.price)})`).join('\n')
     const message = `Hola 👋 Me gustaría reservar un coffret de La Clinique\n\nMi selección:\n${lines}\n\nTotal: $${total}${hasCard ? `\n\nBeneficio para quien regala: bono de $${BONUS.value} en potenciadores o medicina estética (no suma al total).` : ''}\n\n¿Me ayudan a coordinar el envío?`
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer')
   }
@@ -99,7 +101,7 @@ export default function CoffretConfigurator() {
                   <span className={styles.itemBody}>
                     <span className={styles.itemHead}>
                       <span className={styles.itemTitle}>{item.label}</span>
-                      <span className={styles.itemPrice}>${item.price}</span>
+                      <span className={styles.itemPrice}>{priceLabel(item.price)}</span>
                     </span>
                     <em className={styles.emotion}>{item.emotion}</em>
                     <span className={styles.desc}>{item.desc}</span>
@@ -132,7 +134,7 @@ export default function CoffretConfigurator() {
                 {chosen.map((i) => (
                   <div key={i.id} className={styles.line}>
                     <span>— {i.label}</span>
-                    <span>${i.price}</span>
+                    <span>{priceLabel(i.price)}</span>
                   </div>
                 ))}
                 {hasCard && (
